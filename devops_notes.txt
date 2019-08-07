@@ -1,0 +1,44 @@
+
+
+DevOps Engineer:
+
+1. Operating System : (System & Network Administration)
+    1. Unix
+    2. MacOS
+    3. Windows
+    4. Linux
+
+1. Download, Install and Configure
+2. User & Group Mgmt
+3. File & Dir 
+4. Process Mgmt
+5. Permissions
+
+6. WebServer i.e. ISS, Httpd, 
+7. DB i.e. MySQL, Mariadb
+
+
+GUI + CUI 
+
+
+2. Cloud : AWS, AZURE , GCP
+
+    1. Training & Certifications
+        1. Foundational 
+        2. Associate Level
+        3. Professional 
+        4. Specilist
+
+3. Programming :
+    1. Java
+    2. Python
+
+4. Database - SQL (DDL, DQL, DCL, DML, etc..)
+
+5. DevOps CI/CD Pipeline 
+
+1. Git, Github, Java(Maven), Jenkins(CI), Junit, SonarQube, Jfrog/Nexus, Docker, Configuration Mgmt(Ansible), Cloud(AWS|AZURE)
+ 
+
+
+

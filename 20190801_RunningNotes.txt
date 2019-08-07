@@ -1,0 +1,59 @@
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ pwd
+/Users/keshavkummari
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ git --version
+git version 2.22.0
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ git config --global user.name "keshavkummari"
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ 
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ git config --global user.email "keshav.kummari@gmail.com"
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ 
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ git clone https://github.com/keshavkummari/devops_intelli_01.git
+Cloning into 'devops_intelli_01'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ 
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ ls -ld devops_intelli_01/
+drwxr-xr-x  4 keshavkummari  staff  128 Aug  1 08:24 devops_intelli_01/
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ 
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ ls -lrta devops_intelli_01/
+total 8
+drwxr-xr-x+ 28 keshavkummari  staff  896 Aug  1 08:24 ..
+drwxr-xr-x   4 keshavkummari  staff  128 Aug  1 08:24 .
+-rw-r--r--   1 keshavkummari  staff   42 Aug  1 08:24 README.md
+drwxr-xr-x  13 keshavkummari  staff  416 Aug  1 08:24 .git
+(base) Keshavs-MacBook-Pro:~ keshavkummari$ cd devops_intelli_01/
+(base) Keshavs-MacBook-Pro:devops_intelli_01 keshavkummari$ ls -lrta
+total 8
+drwxr-xr-x+ 28 keshavkummari  staff  896 Aug  1 08:24 ..
+drwxr-xr-x   4 keshavkummari  staff  128 Aug  1 08:24 .
+-rw-r--r--   1 keshavkummari  staff   42 Aug  1 08:24 README.md
+drwxr-xr-x  13 keshavkummari  staff  416 Aug  1 08:24 .git
+(base) Keshavs-MacBook-Pro:devops_intelli_01 keshavkummari$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+(base) Keshavs-MacBook-Pro:devops_intelli_01 keshavkummari$ git branch -r
+  origin/HEAD -> origin/master
+  origin/master
+(base) Keshavs-MacBook-Pro:devops_intelli_01 keshavkummari$ git fetch
+remote: Enumerating objects: 7, done.
+remote: Counting objects: 100% (7/7), done.
+remote: Compressing objects: 100% (4/4), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (6/6), done.
+From https://github.com/keshavkummari/devops_intelli_01
+ * [new branch]      developer-b   -> origin/developer-b
+ * [new branch]      developer-c   -> origin/developer-c
+ * [new branch]      keshavkummari -> origin/keshavkummari
+(base) Keshavs-MacBook-Pro:devops_intelli_01 keshavkummari$ git pull
+Already up to date.
+(base) Keshavs-MacBook-Pro:devops_intelli_01 keshavkummari$ git branch -r
+  origin/HEAD -> origin/master
+  origin/developer-b
+  origin/developer-c
+  origin/keshavkummari
+  origin/master
+(base) Keshavs-MacBook-Pro:devops_intelli_01 keshavkummari$ git branch
+* master

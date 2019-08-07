@@ -1,0 +1,21 @@
+ 2  ls -lrt
+    3  pwd
+    4  git clone https://github.com/keshavkummari/devops_intellipaat_7am.git
+    5  ls -ld devops_intellipaat_7am/
+    6  mkdir devops_kk
+    7  ls -ld devops_*
+    8  ls -lrta devops_kk
+    9  ls -lrta devops_intellipaat_7am/
+   10  pwd
+   11  cd devops_intellipaat_7am/
+   12  ls -lrta
+   13  git config --global user.name "keshavkummari"
+   14  git config --global user.email "keshav.kummari@gmail.com"
+   15  git status
+   16  git add .
+   17  git status
+   18  git commit -m "MyFirstCOmmit"
+   19  git status
+   20  git push -u origin master
+   21  ls -lrt
+   22  history

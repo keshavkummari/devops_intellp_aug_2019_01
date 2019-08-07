@@ -1,0 +1,35 @@
+Agenda : 
+
+CI/CD Pipeline :
+
+Git, Github, Java, Maven, Jenkins 
+
+Linux : AWS Cloud 
+
+Linux : Distributions (i.e. Ubuntu, Rhel, Centos)
+
+AWS Cloud : Compute >> EC2 >> Linux :
+
+Ubutu 18.04 (ubuntu) | Redhat,CentOS,Amazon - ec2-user 
+
+Hostname / Ipaddress : 3.93.10.9
+UserName : ubuntu 
+PassWord : intelli_aws.pem 
+Port No  : 22 allow 0.0.0.0/0 
+
+Windows: 
+cmd/powershell - gitbash : 
+
+ssh -i intelli_aws.pem ubuntu@3.93.10.9 
+
+ssh -i "intelli_aws.pem" ubuntu@ec2-3-93-10-9.compute-1.amazonaws.com
+
+Utility Softwares : vim, curl, wget, unzip, git 
+
+Download, Install and Configure of Java 1.8 & Maven 3.4.5 
+
+gitflow : Download the Java Code part of linux & configure gitflow 
+
+Download, install & configure of Jenkins on linux 
+
+
