@@ -1,0 +1,28 @@
+
+
+Types of Users : 
+
+1. Root : 
+    URL : aws.amazon.com 
+    Username : firstname.lastname@gmail.com
+    Password : ********
+
+2. IAM User : https://intellipaat1.signin.aws.amazon.com/console
+    URL : intellipaat.signin.aws.amazon.com 
+    AccountID/Name : intellipaat or 1029939393
+    Username : keshavkummari
+    Password : ********
+
+Notes :
+
+21 Regions & 66 AZ's 
+
+Regions : A Default VPC :
+
+Networking & Content Delivery >> VPC : 
+
+
+    
+
+
+Various of logins : 

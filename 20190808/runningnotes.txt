@@ -1,0 +1,196 @@
+
+AWS Cloud : 
+
+# EC2 instance - Linux (Ubuntu - 18.04)
+
+ubuntu@ip-172-31-83-177:~$ sudo apt install vim curl unzip wget elinks 
+
+ubuntu@ip-172-31-83-177:~$ java -version
+
+Command 'java' not found, but can be installed with:
+
+sudo apt install default-jre            
+sudo apt install openjdk-11-jre-headless
+sudo apt install openjdk-8-jre-headless 
+
+ubuntu@ip-172-31-83-177:~$ sudo apt install openjdk-8-jre-headless
+
+
+ubuntu@ip-172-31-83-177:~$ # sudo apt install openjdk-8-jre-headless
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ ls -lrt /usr/lib/jvm/java-8-openjdk-amd64/
+total 12
+lrwxrwxrwx 1 root root   41 Jul 18 18:52 docs -> ../../../share/doc/openjdk-8-jre-headless
+drwxr-xr-x 4 root root 4096 Aug  8 03:00 man
+drwxr-xr-x 5 root root 4096 Aug  8 03:00 jre
+drwxr-xr-x 2 root root 4096 Aug  8 03:00 bin
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ ls -lrt /usr/lib/jvm/java-8-openjdk-amd64/jre/
+total 164
+-rw-r--r-- 1 root root 147535 Jul 18 18:52 THIRD_PARTY_README
+-rw-r--r-- 1 root root   1522 Jul 18 18:52 ASSEMBLY_EXCEPTION
+drwxr-xr-x 4 root root   4096 Aug  8 03:00 man
+drwxr-xr-x 8 root root   4096 Aug  8 03:00 lib
+drwxr-xr-x 2 root root   4096 Aug  8 03:00 bin
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+
+ubuntu@ip-172-31-83-177:~$ ls -lrt /etc/environment 
+-rw-r--r-- 1 root root 96 Jul 22 17:10 /etc/environment
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ ls -lrt /etc/pro
+profile    profile.d/ protocols  
+ubuntu@ip-172-31-83-177:~$ ls -lrt /etc/pro
+profile    profile.d/ protocols  
+ubuntu@ip-172-31-83-177:~$ ls -lrt /etc/profile
+-rw-r--r-- 1 root root 581 Apr  9  2018 /etc/profile
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ vim /etc/environment
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ wc /etc/environment
+ 1  1 96 /etc/environment
+ubuntu@ip-172-31-83-177:~$ # cp -pv /etc/environment /etc/environment_YYYYMMDD
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ cp -pv /etc/environment /etc/environment_20190808_V1.0
+'/etc/environment' -> '/etc/environment_20190808_V1.0'
+cp: cannot create regular file '/etc/environment_20190808_V1.0': Permission denied
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ sudo cp -pv /etc/environment /etc/environment_20190808_V1.0 
+'/etc/environment' -> '/etc/environment_20190808_V1.0'
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ ls -lrt /etc/environment*
+-rw-r--r-- 1 root root 96 Jul 22 17:10 /etc/environment_20190808_V1.0
+-rw-r--r-- 1 root root 96 Jul 22 17:10 /etc/environment
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ pwd
+/home/ubuntu
+ubuntu@ip-172-31-83-177:~$ ls -lrta
+total 36
+-rw-r--r-- 1 ubuntu ubuntu  807 Apr  4  2018 .profile
+-rw-r--r-- 1 ubuntu ubuntu 3771 Apr  4  2018 .bashrc
+-rw-r--r-- 1 ubuntu ubuntu  220 Apr  4  2018 .bash_logout
+drwxr-xr-x 3 root   root   4096 Aug  8 02:42 ..
+drwx------ 2 ubuntu ubuntu 4096 Aug  8 02:42 .ssh
+drwx------ 3 ubuntu ubuntu 4096 Aug  8 02:47 .gnupg
+drwx------ 2 ubuntu ubuntu 4096 Aug  8 02:47 .cache
+-rw-r--r-- 1 ubuntu ubuntu    0 Aug  8 02:49 .sudo_as_admin_successful
+-rw------- 1 ubuntu ubuntu  767 Aug  8 03:07 .viminfo
+drwxr-xr-x 5 ubuntu ubuntu 4096 Aug  8 03:07 .
+ubuntu@ip-172-31-83-177:~$ 
+ubuntu@ip-172-31-83-177:~$ 
+
+
+JAVA_HOME = "/usr/lib/jvm/java-8-openjdk-amd64/"
+JRE_HOME  = "/usr/lib/jvm/java-8-openjdk-amd64/jre/"
+
+
+/usr/share/maven/bin/mvn to provide /usr/bin/mvn (mvn)
+
+root@ip-172-31-83-177:~# cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+# Java & JRE Environment Variables :
+
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+JRE_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre/"
+
+MAVEN_HOME="/usr/share/maven/"
+M2=$MAVEN_HOME/bin
+
+root@ip-172-31-83-177:~# # wget http://www-us.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.zip
+root@ip-172-31-83-177:~# 
+root@ip-172-31-83-177:~# 
+root@ip-172-31-83-177:~# source /etc/environment
+root@ip-172-31-83-177:~# 
+root@ip-172-31-83-177:~# mvn --version
+Apache Maven 3.6.0
+Maven home: /usr/share/maven
+Java version: 1.8.0_222, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-1044-aws", arch: "amd64", family: "unix"
+root@ip-172-31-83-177:~# 
+root@ip-172-31-83-177:~# echo $MAVEN_HOME
+/usr/share/maven/
+root@ip-172-31-83-177:~# 
+root@ip-172-31-83-177:~# echo $M2
+/usr/share/maven//bin
+root@ip-172-31-83-177:~# 
+
+
+
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>releases</name>
+			<url>http://34.229.97.129:8081/artifactory/libs-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshot</id>
+			<name>snapshots</name>
+			<url>http://34.229.97.129:8081/artifactory/libs-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+
+
+root@ip-172-31-83-177:~/java_code_0001# history
+    1  pwd
+    2  exit
+    3  cd
+    4  source /etc/environment
+    5  vim /etc/environment
+    6  source /etc/environment
+    7  echo $JAVA_HOME
+    8  echo $JRE_HOME
+    9  apt update
+   10  apt list --upgradable
+   11  apt install maven
+   12  ls -lrt /usr/share/maven/bin/
+   13  vi /etc/environment
+   14  cat /etc/environment
+   15  # wget http://www-us.apache.org/dist/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.zip
+   16  source /etc/environment
+   17  mvn --version
+   18  echo $MAVEN_HOME
+   19  echo $M2
+   20  pwd
+   21  uname -a
+   22  apt update
+   23  # yum update 
+   24  apt install git
+   25  git --version
+   26  pwd
+   27  ls -lrta
+   28  pwd
+   29  ls -lrt
+   30  git config --global user.name "keshavkummari"
+   31  git config --global user.email "keshav.kummari@gmail.com"
+   32  git clone https://github.com/keshavkummari/java_code_0001.git
+   33  ls -lrt
+   34  ls -lrta
+   35  pwd
+   36  cd java_code_0001/
+   37  ls -lrta
+   38  git branch
+   39  git fetch
+   40  git pull
+   41  pwd
+   42  ls -lrta
+   43  pwd
+   44  java -version
+   45  mvn --version
+   46  echo $JAVA_HOME
+   47  echo $JRE_HOME
+   48  echo $M2
+   49  pwd
+   50  ls -lrta
+   51  mvn clean
+   52  mvn clean package 
