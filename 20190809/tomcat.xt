@@ -1,0 +1,50 @@
+
+EC2 instance >> 
+
+STEP-1 : 
+    1. Java 1.8
+    2. Setup Env 
+
+STEP-2 : Tomcat ()
+
+wget http://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.43/bin/apache-tomcat-8.5.43.tar.gz
+
+root@tomcat:/opt/tomcat# cd webapps/
+root@tomcat:/opt/tomcat/webapps# ls -lrt
+total 20
+drwxr-x---  3 root root 4096 Aug  9 03:11 ROOT
+drwxr-x--- 14 root root 4096 Aug  9 03:11 docs
+drwxr-x---  6 root root 4096 Aug  9 03:11 examples
+drwxr-x---  5 root root 4096 Aug  9 03:11 manager
+drwxr-x---  5 root root 4096 Aug  9 03:11 host-manager
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# ls -lrt manager/META-INF/context.xml 
+-rw-r----- 1 root root 1223 Jul  4 20:56 manager/META-INF/context.xml
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# 
+root@tomcat:/opt/tomcat/webapps# ls -lrt host-manager/META-INF/context.xml 
+-rw-r----- 1 root root 1222 Jul  4 20:56 host-manager/META-INF/context.xml
+
+
+root@tomcat:/opt/tomcat/bin# ./startup.sh 
+Using CATALINA_BASE:   /opt/tomcat
+Using CATALINA_HOME:   /opt/tomcat
+Using CATALINA_TMPDIR: /opt/tomcat/temp
+Using JRE_HOME:        /usr/lib/jvm/java-8-openjdk-amd64/jre/
+Using CLASSPATH:       /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar
+Tomcat started.
+root@tomcat:/opt/tomcat/bin# 
+root@tomcat:/opt/tomcat/bin# ps -aux | grep java
+root      8632 19.0  7.1 2252572 72344 pts/1   Sl   03:18   0:02 /usr/lib/jvm/java-8-openjdk-amd64/jre//bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /opt/tomcat/bin/bootstrap.jar:/opt/tomcat/bin/tomcat-juli.jar -Dcatalina.base=/opt/tomcat -Dcatalina.home=/opt/tomcat -Djava.io.tmpdir=/opt/tomcat/temp org.apache.catalina.startup.Bootstrap start
+root      8676  0.0  0.1  12916  1084 pts/1    S+   03:18   0:00 grep --color=auto java
+
+
+#---------------------------------------------------------#
+<role rolename="admin-gui"/>
+  <role rolename="admin-script"/>
+  <role rolename="manager-gui"/>
+  <role rolename="manager-status"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <user name="admin" password="admin" roles="admin-gui,admin-script,manager-gui,manager-status,manager-script,manager-jmx"/>
+</tomcat-users>

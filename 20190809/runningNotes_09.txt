@@ -1,0 +1,34 @@
+
+Agenda : 
+
+EC2 instance : Ubuntu 18.04 
+
+    1. Java 1.8
+    2. Setup Env 
+
+1. Tomcat : Download, Install and Configure Tomcat part of EC2 instance
+
+    1. Java 1.8
+    2. Setup Env 
+
+2. Configure Tomcat
+
+3. Start the Tomcat Server 
+
+4. Validate/Testing the Tomcat Server 
+
+Host Website : 
+
+1. Domain Purchase : Godaddy, aws, google etc...
+2. Host a Domain : Godaddy, AWS, AZURE, etc..
+
+JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"
+JRE_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre/"
+
+Tomcat : Application Server 
+
+Java Code >> 
+
+WebServer : Apache httpd, nginx 
+
+Application Server : Tomcat, Jboss, Webshpire, etc....
