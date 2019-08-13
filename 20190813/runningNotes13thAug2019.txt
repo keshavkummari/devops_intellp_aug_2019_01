@@ -1,0 +1,78 @@
+
+Agenda :
+
+1. Compile, and Package Code on Linux Machine
+
+2. Deploy the Code on Tomcat Application Server 
+
+3. Jenkins - Download, Install & Configure 
+
+4. Create a Job to Compile, Packge and Deploy part of Tomcat Application
+
+
+STEP-1 : Add Jenkins Repo to your OS:
+
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+
+STEP-2 : Add a Record in a Package Repo Confiugration file:
+
+sh -c 'echo deb https://pkg.jenkins.io/debian binary/ > /etc/apt/sources.list.d/jenkins.list'
+
+STEP-3 : Repo Update 
+
+apt update 
+
+apt list --upgradable
+
+STEP-4 : Download and Install Jenkins on Ubuntu :
+
+apt install jenkins
+
+ls -lrt /etc/default/jenkins 
+
+cp -pv /etc/default/jenkins /etc/default/jenkins_20190813_V1.0
+
+root@dev:/opt# wc /etc/default/jenkins
+  79  363 2775 /etc/default/jenkins
+root@dev:/opt# 
+root@dev:/opt# vim /etc/default/jenkins
+root@dev:/opt# 
+root@dev:/opt# diff /etc/default/jenkins /etc/default/jenkins_20190813_V1.0 
+63c63
+< HTTP_PORT=8090
+---
+> HTTP_PORT=8080
+root@dev:/opt# 
+
+STEP-5 : Start the Jenkins and Configure:
+
+  143  systemctl status jenkins
+  144  systemctl stop jenkins
+  145  systemctl status jenkins
+  146  systemctl start jenkins
+  147  systemctl status jenkins
+
+root@dev:/opt# ls -lrt /var/lib/jenkins/secrets/initialAdminPassword
+-rw-r----- 1 jenkins jenkins 33 Aug 13 03:29 /var/lib/jenkins/secrets/initialAdminPassword
+root@dev:/opt# 
+root@dev:/opt# cat /var/lib/jenkins/secrets/initialAdminPassword
+346244c1f9ab4ad9abd2cf61ee69574e
+root@dev:/opt# 
+
+#------------- Install & Configure Jenkins Plugins on Ubuntu -----------#
+
+Go to Jenkins >> Manage Jenkins >> Global Tool Configuration >> Java & MAVEN
+# echo $JAVA_HOME
+/usr/lib/jvm/java-8-oracle
+
+# echo $MAVEN_HOME
+/usr/share/maven/
+
+Go to Jenkins >> Manage Jenkins >> Manage Plugins >> Under Available add below mentioned plugins:
+
+Jenkins Plugins :
+1. Conditional Buildstep
+2. Deploy to container 
+3. Environment Injector
+4. Git Parameter 
+5. GitHub Branch Source
