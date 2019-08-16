@@ -1,0 +1,88 @@
+
+
+Package Management :
+
+Download,
+Install,
+Configure,
+Uninstall
+&
+Search 
+
+Software/package : git
+
+Different Linux Distributions : 
+
+CENTOS, REDHAT, FEDORA, AMAZON LINUX, etc.. : yum , rpm 
+
+UBUNTU : apt and apt-get 
+
+4. Git Parameter 
+5. GitHub Branch Source
+
+
+Binary Artifactory(Nexus, Jfrog) : .war or .jar 
+
+Jfrog : 
+
+Ubuntu, Centos, Rhel, Amazonlinux 
+
+STEP-1 :
+
+Amazonlinux / Ubuntu : 
+
+Installed Java-1.8 & Configure Env 
+
+STEP-2 : 
+
+wget https://kkummari.s3.ap-south-1.amazonaws.com/jfrog-artifactory-oss-6.1.0.zip
+
+
+[ec2-user@jfrog bin]$ history
+    1  hostname
+    2  java -version
+    3  sudo yum install java-1.8*
+    4  pwd
+    5  hostname
+    6  java -version
+    7  echo $JAVA_HOME
+    8  ls -lrt /usr/lib/jvm
+    9  pwd
+   10  ls -lrt .bashrc
+   11  ls -lrt /etc/environment 
+   12  sudo vi /etc/environment 
+   13  ls -lrt /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.201.b09-0.amzn2.x86_64
+   14  sudo vi /etc/environment 
+   15  cat /etc/environment 
+   16  sudo su
+   17  pwd
+   18  sudo touch /etc/environment /etc/
+   19  sudo su
+   20  pwd
+   21  vim .bashrc
+   22  source .bashrc
+   23  ls
+   24  pwd
+   25  echo $JAVA_HOME
+   26  echo $JRE_HOME
+   27  cd
+   28  pwd
+   29  wget https://s3.amazonaws.com/kkummari/jfrog-artifactory-oss-6.1.0.zip
+   30  pwd
+   31  wget https://kkummari.s3.ap-south-1.amazonaws.com/jfrog-artifactory-oss-6.1.0.zip
+   32  ls -lrt
+   33  unzip jfrog-artifactory-oss-6.1.0.zip 
+   34  ls -lrt
+   35  sudo mv artifactory-oss-6.1.0/ /opt/artifactory
+   36  cd /opt
+   37  pwd
+   38  ls -lrt
+   39  cd artifactory/
+   40  pwd
+   41  ls -lrt
+   42  cd bin
+   43  pwd
+   44  ls -lrt
+   
+
+
