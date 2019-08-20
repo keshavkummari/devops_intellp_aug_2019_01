@@ -1,0 +1,104 @@
+
+
+Hardware  : Laptop or Desktop : Windows or MacOS 
+
+
+DevOps CI/CD Pipeline : 
+
+Stages :
+
+    1. dev  : Windows or Linux 
+    2. tst  : Windows or Linux 
+    3. acc  : Windows or Linux 
+    4. prd  : Windows or Linux 
+
+Virtualization Solution : 
+
+https://www.virtualbox.org/wiki/Downloads
+
+1. dev
+2. tst 
+
+BIOS : 
+
+https://docs.docker.com/docker-for-windows/install/
+
+https://docs.docker.com/docker-for-mac/install/
+
+DevOps :
+
+    1. dev
+    2. tst 
+    3. acc 
+    4. prd 
+
+What is Virtualization ?
+
+
+Jenkins :
+
+layer-1 STEP-1 : OS - Ubuntu (required lib)
+
+layer-2 STEP-2 : utility commands wget curl vi unzip 
+
+layer-3 STEP-3 : Java 
+
+layer-4 STEP-4 : Java Env Variable 
+
+layer-5 STEP-5 : Jenkins 
+
+layer-6 STEP-6 : Port Forwarding 8080 to 8090
+
+layer-7 STEP-7 : Daemon / Service was started 
+
+94c26c437f324ed0bb7bbe722f3db0c6
+
+
+#------------------------------------------------------------------------------#
+Docker Overview :
+#------------------------------------------------------------------------------#
+Docker is a container management service.
+
+The keywords of Docker are develop, ship and run anywhere.
+
+The whole idea of Docker is for developers to easily develop applications,
+
+ship them into containers which can then be deployed anywhere.
+
+The initial release of Docker was in March 2013 and since then,
+it has become the buzzword for modern world development,
+especially in the face of Agile-based projects.
+
+#------------------------------------------------------------------------------#
+Features of Docker :
+#------------------------------------------------------------------------------#
+Docker has the ability to reduce the size of development by providing a smaller
+footprint of the operating system via containers.
+
+With containers, it becomes easier for teams across different units,
+such as development, QA and Operations to work seamlessly across applications.
+
+You can deploy Docker containers anywhere, on any physical and virtual machines
+and even on the cloud.
+
+Since Docker containers are pretty lightweight, they are very easily scalable.
+
+#------------------------------------------------------------------------------#
+Components of Docker :
+#------------------------------------------------------------------------------#
+Docker has the following components
+
+1. MACOS : It allows one to run Docker containers on the Mac OS.
+
+2. Linux − It allows one to run Docker containers on the Linux OS.
+
+3. Windows − It allows one to run Docker containers on the Windows OS.
+
+4. Docker Engine − It is used for building Docker images and creating Docker containers.
+
+5. Docker Hub − This is the registry which is used to host various Docker images.
+
+6. Docker Compose − This is used to define applications using multiple Docker containers.
+
+
+The official site for Docker is https://www.docker.com/
