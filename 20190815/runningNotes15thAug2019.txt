@@ -1,0 +1,80 @@
+
+Agenda : 
+
+Continuous Integration :
+
+What is Continuous Integration?
+
+In software engineering, continuous integration is the practice of merging all developers' 
+working copies to a shared mainline several times a day. 
+
+Grady Booch first proposed the term CI in his 1991 method,
+although he did not advocate integrating several times a day.
+
+(Code Commit is built and tested) @Developers (snapshot & release)
+1. Compile         : Maven
+2. Unit Testing    : Junit
+3. Code Analysis   : SonarQube 
+4. DB Scripts      : Generate DB Scripts
+5. DB Validation   : DB Scripts Validation
+6. Terraform       : Infrastructure As Code - Create infra configuration files
+7. Infra Validation : Validation infra configuration files
+
+CI/CD : Continuous Integration(Code Commit is built and tested) @Developers (snapshot & release)
+
+CD : Continuous Delivery : Ops team (keshavkummari.war)
+
+CD : Continuous Deployment : (To deploy on various stages i.e. tst, acc, & prd)
+
+Continuous Integration Tools :
+
+Continuous Integration Server (Jenkins, Bamboo, CruiseControl, TeamCity, and others)
+
+SCM/Source Control Tool (e.g., CVS, SVN, GIT, Mercurial, Perforce, ClearCase, AWS CodeCommit, AzureRepos, Gitlab, Github and others)
+
+Build tool (Make, ANT, Maven, Ivy, Gradle, and others)
+
+Automation testing framework (Junit, Selenium, Appium, TestComplete, UFT, and others)
+
+#--------------------------------------------------------------------------------------------#
+What is Jenkins ?
+
+- CI tool
+- Open Source 
+- Orchestration (Various Plugins)
+- Written in java
+- Plugin Manager
+- Complete development lifecycle of software from 
+
+        - Building
+        - Testing
+        - Documenting the software 
+        - Deploying to various stages (dev,tst,acc,prd)
+
+#--------------------------------------------------------------------------------------------#
+Jenkins History :
+
+Kouhuske Kawaguchi @ Java Developer, @ SUN Microsystems, Building the Code and Fixing the Errors Repetitively.
+
+Hudson : Automates Build, & Test the Task.
+
+Create in 2004.
+
+2011 Hudson was renamed to Jenkins 
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+Why Continuous Integration with Jenkins?
+
+Before Jenkins :
+
+Once all Developers had completed their assigned coding tasks, they used to commit their code all at same time. Later, Build is tested and deployed.
+
+Code commit built, and test cycle was very infrequent, and a single build was done after many days.
+
+After Jenkins :
+#--------------------------------------------------------------------------------------------#
+
+
+
+

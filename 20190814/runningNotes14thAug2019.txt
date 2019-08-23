@@ -1,0 +1,9 @@
+
+Go to Jenkins >> Manage Jenkins >> Manage Plugins >> Under Available add below mentioned plugins:
+
+Jenkins Plugins :
+1. Conditional Buildstep
+2. Deploy to container 
+3. Environment Injector
+4. Git Parameter 
+5. GitHub Branch Source
