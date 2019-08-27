@@ -1,0 +1,52 @@
+FROM ubuntu
+RUN apt-get update 
+RUN apt-get install apache2 -y 
+ADD . /var/www/html/
+#CMD apachectl -D FOREGROUND
+ENTRYPOINT apachectl -D FOREGROUND
+ENV name DevOps Intellipaat 
+
+#FROM centos
+#ADD . /var/www/html/
+#RUN yum update -y
+#RUN yum install httpd -y 
+#CMD systemctl start httpd.service 
+
+#ENV VAR=VAL 
+
+
+510  touch Dockerfile
+  511  touch index.html
+  512  ls -lrt
+  513  pwd
+  514  ls -lrt
+
+  515  docker build . -t keshavkummari/webserver01
+  516  docker images
+  517  docker run -it -p 80:80 keshavkummari/webserver01:latest 
+  518  docker ps
+  519  docker ps -a
+  520  docker run -it -p 81:80 -d keshavkummari/webserver01:latest
+  521  docker images
+  522  docker ps
+  523  docker exec -it 278065f12462 ps -aux | grep apache2
+  524  docker ps
+  525  ifconfig | grep 192
+  526  pwd
+  527  touch docker_assignment-1.txt
+  528  pwd
+  529  ls -lrt
+  530  docker images
+  531  docker ps
+  532  docker volume create my-vol
+  533  pwd
+  534  cd /Users/keshavkummari/Downloads/BizExpress/
+  535  cd -
+  536  pwd
+  537  docker run -it -v /Users/keshavkummari/Downloads/BizExpress/:/app -d keshavkummari/webserver01:latest 
+  538  docker ps
+  539  docker exec -it c83a278256c5 /bin/bash
+  540  history
+# docker run -it -v /Users/keshavkummari/Downloads/BizExpress/:/var/www/html/ -p 82:80 -d keshavkummari/webserver01:latest 
+
+docker run -it --name dev01 -v /Users/keshavkummari/Downloads/BizExpress/:/var/www/html/ -p 82:80 -d keshavkummari/webserver01:latest 
