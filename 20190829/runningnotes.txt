@@ -1,0 +1,96 @@
+
+
+Keshavs-MacBook-Pro:~ keshavkummari$ docker swarm init --advertise-addr=192.168.0.10
+Swarm initialized: current node (0hec8jqpu2tq81aggl7mjjffe) is now a manager.
+
+To add a worker to this swarm, run the following command:
+
+    docker swarm join --token SWMTKN-1-3ethhctlc6nv9fpfhd672m9kjp3h5h30tm5d96gn07ayooqedn-eig3e9do5j15gk6zywvhpolki 192.168.0.10:2377
+
+To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
+
+
+
+Cluster Types :
+
+1. Storage 
+2. High Availability
+3. Load Balancing
+4. High Performance 
+
+
+  508  docker swarm init --advertise-addr=192.168.0.10
+  509  docker service create -name apache --replicas 3  -p 80:80 hshar/webapp
+  510  docker service create --name apache --replicas 3  -p 80:80 hshar/webapp
+  511  docker ps 
+  512  ifconfig | 192.168
+  513  ifconfig | grep 192.168
+  514  docker service ls
+  515  docker stop 2559522b32b2
+  516  docker service ls
+  517  docker stop c4b769cb803f
+  518  docker service ls
+  519  docker ps
+  520  docker stop 4bace38b3468
+  521  docker service ls
+  522  docker ps
+  523  docker service remove apache
+  524  docker ps
+  525  docker service ls
+  526  docker ps
+  527  docker stop a5c671256b57
+  528  docker ps
+  529  docker images
+  530  docker ps
+  531  docker service create --name tomcat --replicas 3  -p 8888:8888 tomcat:8.0
+  532  docker ps
+  533  docker service ls
+  534  ifconfig | grep 192.
+  535  ifconfig | grep 192.
+  536  docker service ls
+  537  docker service remove tomcat
+  538  docker service ls
+  539  docker service create --name tomcat --replicas 3  -p 8888:8080 tomcat:8.0
+  540  docker node ls
+  541  docker stack ls
+  542  docker service ls
+  543  docker service ls
+  544  docker node ls
+  545  docker stack ls
+  546  docker service logs tomcat
+  547  docker ps
+  548  docker service scale tomcat=2
+  549  docker service ls
+  550  docker ps
+  551  ifconfig | grep 192.168
+  552  docker ps
+  553  docker service scale tomcat=6
+  554  docker ps
+  555  docker node promote tomcat
+  556  docker node ls
+  557  docker ps
+  558  docker service scale tomcat=2
+  559  docker run swarm manager discovery
+  560  docker swarm ls
+  561  docker run -d -p 4000:4000 swarm manage -H :4000 --replication --advertise 192.168.0.100:4000 consul:192.168.0.101:8500
+  562  docker stack
+  563  docker stack ls
+  564  docker service ls
+  565  docker ps
+  566  docker run -d -p 3376:3376 -v /home/ubuntu/.certs:/certs:ro swarm manage --tlsverify --tlscacert=/certs/ca.pem --tlscert=/certs/cert.pem --tlskey=/certs/key.pem --host=0.0.0.0:3376 token://$TOKEN
+  567  docker images
+  568  docker ps
+  569  docker service ls
+  570  docker service ps tomcat
+  571  docker service inspect tomcat
+  572  # docker service scale tomcat=n
+  573  # docker service remove tomcat
+  574  # docker service rm tomcat
+  575  docker stack ls
+  576  docker network ls
+  577  # docker network create -d overlay NETWORK_NAME
+  578  # docker network rm NETWORK_NAME
+  579  docker stats
+  580  docker service logs tomcat
+
+  
