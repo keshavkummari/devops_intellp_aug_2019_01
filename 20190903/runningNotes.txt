@@ -1,0 +1,214 @@
+
+Agenda :
+
+1. Git
+
+2. Tomcat
+
+3. Jenkins
+
+4. Jfrog
+
+5. Java
+
+6. Maven 
+
+7. Docker 
+
+Integrations : 
+
+1. Github Integration : Development Server 
+2. Maven & Jfrog Integration
+3. Jenkins Integration with Maven, Jfrog, Github
+4. Docker 
+
+
+ubuntu@dev:~$ hostname
+dev.ckk.cloud
+ubuntu@dev:~$ java -version
+openjdk version "1.8.0_222"
+OpenJDK Runtime Environment (build 1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10)
+OpenJDK 64-Bit Server VM (build 25.222-b10, mixed mode)
+ubuntu@dev:~$ 
+ubuntu@dev:~$ echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64/
+ubuntu@dev:~$ 
+ubuntu@dev:~$ mvn --version
+Apache Maven 3.6.0
+Maven home: /usr/share/maven
+Java version: 1.8.0_222, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en, platform encoding: UTF-8
+OS name: "linux", version: "4.15.0-1044-aws", arch: "amd64", family: "unix"
+ubuntu@dev:~$ 
+ubuntu@dev:~$ echo $MAVEN_HOME
+/usr/share/maven
+ubuntu@dev:~$ echo $M2
+$MAVEN_HOME/bin
+ubuntu@dev:~$
+
+ubuntu@dev:~$ cat /etc/environment
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+#JavaHomePath
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
+
+#MavenHomePath
+MAVEN_HOME=/usr/share/maven
+M2=$MAVEN_HOME/bin
+
+
+root@dev:/opt/tomcat# grep "|.*"  webapps/host-manager/META-INF/context.xml 
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|.*" />
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+root@dev:/opt/tomcat# 
+root@dev:/opt/tomcat# grep "|.*"  webapps/manager/META-INF/context.xml 
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1|.*" />
+  <Manager sessionAttributeValueClassNameFilter="java\.lang\.(?:Boolean|Integer|Long|Number|String)|org\.apache\.catalina\.filters\.CsrfPreventionFilter\$LruCache(?:\$1)?|java\.util\.(?:Linked)?HashMap"/>
+root@dev:/opt/tomcat# 
+root@dev:/opt/tomcat# tail conf/tomcat-users.xml 
+  <user username="role1" password="<must-be-changed>" roles="role1"/>
+-->
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<role rolename="admin-gui"/>
+<role rolename="admin-manager"/>
+<role rolename="admin-script"/>
+<user username="admin" password="redhat@123" roles="admin-gui,admin-manager,admin-script,manager-gui,manager-script"/>
+
+</tomcat-users>
+root@dev:/opt/tomcat#
+
+root@dev:/opt/tomcat/bin# # ./startup.sh 
+root@dev:/opt/tomcat/bin# 
+root@dev:/opt/tomcat/bin# systemctl status tomcat.service
+● tomcat.service - Apache Tomcat 8 Servlet Container
+   Loaded: loaded (/etc/systemd/system/tomcat.service; enabled; vendor preset: enabled)
+   Active: active (running) since Tue 2019-09-03 01:45:25 UTC; 4min 43s ago
+ Main PID: 1106 (java)
+    Tasks: 45 (limit: 4703)
+   CGroup: /system.slice/tomcat.service
+           └─1106 /usr/bin/java -Djava.util.logging.config.file=/opt/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.ju
+
+Sep 03 01:45:24 dev.ckk.cloud systemd[1]: Starting Apache Tomcat 8 Servlet Container...
+Sep 03 01:45:24 dev.ckk.cloud startup.sh[931]: Existing PID file found during start.
+Sep 03 01:45:25 dev.ckk.cloud startup.sh[931]: Removing/clearing stale PID file.
+Sep 03 01:45:25 dev.ckk.cloud startup.sh[931]: Tomcat started.
+Sep 03 01:45:25 dev.ckk.cloud systemd[1]: Started Apache Tomcat 8 Servlet Container.
+
+
+root@dev:~# # wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+root@dev:~# # sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+root@dev:~# # apt-get update
+root@dev:~# # apt-get install jenkins
+root@dev:~# # vim /etc/default/jenkins 
+root@dev:~# # systemctl restart jenkins.service
+root@dev:~# # cat /var/lib/jenkins/secrets/initialAdminPassword
+
+root@dev:~# ssh-keygen -t rsa -b 4096 -C "keshav.kummari@gmail.com"
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa): /root/.ssh/github_keys
+Enter passphrase (empty for no passphrase): 
+Enter same passphrase again: 
+Your identification has been saved in /root/.ssh/github_keys.
+Your public key has been saved in /root/.ssh/github_keys.pub.
+The key fingerprint is:
+SHA256:wLPrE36BAbYivKQHlgUPWMq3Syu0hri+7CXUl8BKBE8 keshav.kummari@gmail.com
+The key's randomart image is:
++---[RSA 4096]----+
+|+=E              |
+|+++.o.           |
+|oo+* o+          |
+|+== + o+         |
+|+*.= o.oS        |
+|*.+ + o..        |
+|o* + ... .       |
+|o.+  .o .        |
+|+=.   .o         |
++----[SHA256]-----+
+root@dev:~# ls -lrta .ssh/
+total 20
+-rw------- 1 root root  554 Sep  2 17:22 authorized_keys
+drwx------ 4 root root 4096 Sep  2 18:01 ..
+-rw-r--r-- 1 root root  750 Sep  3 01:58 github_keys.pub
+-rw------- 1 root root 3243 Sep  3 01:58 github_keys
+drwx------ 2 root root 4096 Sep  3 01:58 .
+root@dev:~# cat .ssh/github_keys
+
+
+root@dev:~# eval "$(ssh-agent -s)"
+Agent pid 13090
+root@dev:~# 
+root@dev:~# ssh-add -k ~/.ssh/github_keys
+Identity added: /root/.ssh/github_keys (/root/.ssh/github_keys)
+root@dev:~# 
+root@dev:~# ssh -T git@github.com 
+The authenticity of host 'github.com (13.234.176.102)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'github.com,13.234.176.102' (RSA) to the list of known hosts.
+Hi keshavkummari! You've successfully authenticated, but GitHub does not provide shell access.
+root@dev:~#
+
+
+ssh -T git@ckk.cloud  
+
+
+ckk.cloud:8080 ---> Godaddy ---> ipadress --- > NS (AWS - 4 ) : 13.235.238.27:8080 
+
+
+root@dev:~# git config --global user.name "keshavkummari"
+root@dev:~# 
+root@dev:~# git config --global user.email "keshav.kummari@gmail.com"
+root@dev:~# 
+root@dev:~# git clone https://github.com/keshavkummari/javacode.git
+Cloning into 'javacode'...
+remote: Enumerating objects: 178, done.
+remote: Counting objects: 100% (178/178), done.
+remote: Compressing objects: 100% (121/121), done.
+remote: Total 178 (delta 35), reused 165 (delta 29), pack-reused 0
+Receiving objects: 100% (178/178), 47.06 MiB | 12.09 MiB/s, done.
+Resolving deltas: 100% (35/35), done.
+root@dev:~# 
+root@dev:~# ls -lrt
+total 8
+drwxr-xr-x 3 root root 4096 Sep  2 17:22 snap
+drwxr-xr-x 5 root root 4096 Sep  3 02:21 javacode
+root@dev:~# 
+
+
+  110  git config --global user.name "keshavkummari"
+  111  git config --global user.email "keshav.kummari@gmail.com"
+  112  git clone https://github.com/keshavkummari/javacode.git
+  113  ls -lrt
+  114  pwd
+  115  ls -lrt
+  116  cd javacode/
+  117  ls -lrt
+  118  mvn --version
+  119  echo $MAVEN_HOME
+  120  echo $M2
+  121  mvn clean
+  122  history
+
+
+wget https://jfrogkeshavkummari.s3.ap-south-1.amazonaws.com/jfrog-artifactory-oss-6.1.0.zip
+
+unzip jfrog-artifactory-oss-6.1.0.zip
+
+cd /opt/artifactory-oss-6.1.0
+
+cd bin/
+
+./installService.sh
+
+
+  176  cd artifactory-oss-6.1.0/
+  177  ls -lrt
+  178  cd in
+  179  cd bin
+  180  ls -lrt
+  181  # ./installService.sh 
+  182  systemctl status artifactory.service
+  183  /opt/artifactory-oss-6.1.0/bin/artifactoryManage.sh status
+
+  

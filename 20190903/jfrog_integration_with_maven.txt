@@ -1,0 +1,191 @@
+
+#--------------------------------------------------------------------------------------------#
+STEP-1 : Pull the Jfrog Docker Image from hub.docker.com 
+#--------------------------------------------------------------------------------------------#
+https://hub.docker.com/r/alexrudoy/jfrog-artifactory-oss
+
+# docker pull alexrudoy/jfrog-artifactory-oss
+# docker images 
+# docker ps 
+# docker ps -a 
+# docker info 
+# docker inspect alexrudoy/jfrog-artifactory-oss
+#--------------------------------------------------------------------------------------------#
+Open a Browser and Check the status of the Jfrog :
+
+http://192.168.0.4:8081
+
+Setup :
+
+STEP-1 : Set Admin Password : 
+Note : Default UserName : Admin 
+
+STEP-2 : Configure a Proxy Server
+Note : Skip this step 
+
+STEP-3 : Create Repositories
+Note : Select Maven & click on "Create"
+
+STEP-4 : Artifactory on-boarding complete!
+
+Note : Check the Maven Libraries and Click on "Finish"
+
+libs-snapshot-local libs-release-local  jcenter  libs-snapshot libs-release
+
+STEP-5 : Generate Maven Integraton files by clicking on libs-snapshot-local & libs-release-local
+
+Click on  Generate Maven Settings ---> Click on Generate Settings & Copy the settings.xml and settings-security.xml files 
+
+
+#--------------------------------------------------------------------------------------------#
+STEP-6 : Maven and Jfrog Integraton :
+
+Go to Jenkins Server :
+
+# su - jenkins
+
+# pwd
+/var/lib/jenkins
+
+# mkdir .m2
+
+# cd .m2/
+
+# vi settings-security.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<settingsSecurity>
+  <master>{*** Insert password here ***}</master>
+</settingsSecurity>
+
+# vi settings.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <profiles>
+    <profile>
+      <id>default</id>
+      <repositories>
+        <repository>
+          <id>release</id>
+          <name>release</name>
+          <url>http://localhost:8081/artifactory/libs-release-local</url>
+          <releases>
+            <enabled>true</enabled>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </repository>
+        <repository>
+          <id>snapshot</id>
+          <name>snapshot</name>
+          <url>http://localhost:8081/artifactory/libs-snapshot-local</url>
+          <releases>
+            <enabled>false</enabled>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>default</activeProfile>
+  </activeProfiles>
+  <servers>
+    <server>
+      <id>release</id>
+      <username>admin</username>
+      <password>{*** Insert password here ***}</password>
+    </server>
+    <server>
+      <id>snapshot</id>
+      <username>admin</username>
+      <password>{*** Insert password here ***}</password>
+    </server>
+  </servers>
+</settings>
+
+# mvn -emp redhat@123
+{bjpQR7F3n0AHwB27LF0NWrubaAN4/CW+X7Olr+Itiss=}
+
+# vim settings-security.xml
+
+# mvn --encrypt-password redhat@123
+{bjpQR7F3n0AHwB27LF0NWrubaAN4/CW+X7Olr+Itiss=}
+
+# vi settings.xml
+
+Generate SSH key using Root & Jenkins user:
+# ssh-keygen -t rsa -b 4096 -C "keshav.kummari@gmail.com"
+
+# ls -lrt /root/.ssh/id_rsa*
+-rw-r--r--. 1 root root  750 Aug  8 09:23 /root/.ssh/id_rsa.pub
+-rw-------. 1 root root 3243 Aug  8 09:23 /root/.ssh/id_rsa
+
+# ssh-keygen -t rsa -b 4096 -C "keshav.kummari@gmail.com"
+
+# ls -lrt /var/lib/jenkins/.ssh/id_rsa*
+-rw-------. 1 root root 3243 Aug  8 09:24 /var/lib/jenkins/.ssh/id_rsa
+-rw-r--r--. 1 root root  750 Aug  8 09:24 /var/lib/jenkins/.ssh/id_rsa.pub
+
+Copy Public and go to GitHub and update:
+
+https://github.com/settings/keys
+
+Named the key : rhel-7_jenkins
+Named the key : rhel-7_root
+
+# eval "$(ssh-agent -s)"
+Agent pid 2153
+
+# ssh-add -k ~/.ssh/id_rsa
+Identity added: /home/ubuntu/.ssh/id_rsa (/home/ubuntu/.ssh/id_rsa)
+
+# ssh -T git@github.com
+
+# git config --global user.name "jenkins"
+
+# git config --global user.email "keshav.kummari@gmail.com"
+
+# git clone https://github.com/keshavkummari/devops.git
+
+# cd devops/
+
+# git status
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------------------#
