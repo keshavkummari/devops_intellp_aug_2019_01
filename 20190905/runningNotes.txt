@@ -1,0 +1,177 @@
+Keshavs-MacBook-Pro:~ keshavkummari$ pwd
+/Users/keshavkummari
+Keshavs-MacBook-Pro:~ keshavkummari$ cd Downloads/
+Keshavs-MacBook-Pro:Downloads keshavkummari$ 
+Keshavs-MacBook-Pro:Downloads keshavkummari$ ls -lrt keshavkummari_aws.pem 
+-r--------@ 1 keshavkummari  staff  1671 Aug  6 10:48 keshavkummari_aws.pem
+Keshavs-MacBook-Pro:Downloads keshavkummari$ 
+Keshavs-MacBook-Pro:Downloads keshavkummari$ ssh -i "keshavkummari_aws.pem" ubuntu@ec2-13-233-121-148.ap-south-1.compute.amazonaws.com
+The authenticity of host 'ec2-13-233-121-148.ap-south-1.compute.amazonaws.com (13.233.121.148)' can't be established.
+ECDSA key fingerprint is SHA256:apmdP9y3riVrUduqAZVxhlUdnX8d04tY9rAEHDbpxdE.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ec2-13-233-121-148.ap-south-1.compute.amazonaws.com,13.233.121.148' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1044-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Sep  5 02:11:09 UTC 2019
+
+  System load:  0.2               Processes:           88
+  Usage of /:   13.6% of 7.69GB   Users logged in:     0
+  Memory usage: 14%               IP address for eth0: 172.31.4.176
+  Swap usage:   0%
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-4-176:~$ 
+ubuntu@ip-172-31-4-176:~$ 
+ubuntu@ip-172-31-4-176:~$ hostname
+ip-172-31-4-176
+ubuntu@ip-172-31-4-176:~$ pwd
+/home/ubuntu
+ubuntu@ip-172-31-4-176:~$ 
+ubuntu@ip-172-31-4-176:~$ sudo hostnamectl set-hostname "ansible.ckk.cloud"
+ubuntu@ip-172-31-4-176:~$ /bin/bash
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ hostname
+ansible.ckk.cloud
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+ubuntu@ansible:~$ ifconfig
+eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.4.176  netmask 255.255.240.0  broadcast 172.31.15.255
+        inet6 fe80::8be:34ff:feb6:2418  prefixlen 64  scopeid 0x20<link>
+        ether 0a:be:34:b6:24:18  txqueuelen 1000  (Ethernet)
+        RX packets 967  bytes 587215 (587.2 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 714  bytes 80720 (80.7 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 172  bytes 14166 (14.1 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 172  bytes 14166 (14.1 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+ubuntu@ansible:~$ # 172.31.4.176 ansible.ckk.cloud 
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ sudo vi /etc/hosts
+ubuntu@ansible:~$ 
+ubuntu@ansible:~$ cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+172.31.4.176 ansible.ckk.cloud
+ubuntu@ansible:~$ 
+
+ubuntu@ansible:~$ history
+    1  hostname
+    2  cat /etc/hosts
+    3  ifconfig
+    4  # 172.31.4.176 ansible.ckk.cloud 
+    5  sudo vi /etc/hosts
+    6  cat /etc/hosts
+    7  hostname
+    8  cat /etc/hosts
+    9  sudo apt-get update
+   10  sudo apt-get install software-properties-common
+   11  ls -lrt /etc/apt/apt.conf.d/
+   12  ls -lrt /etc/apt/sources.list.d/
+   13  ls -lrt /etc/apt/sources.list
+   14  cat /etc/apt/sources.list
+   15  pwd
+   16  sudo apt-add-repository ppa:ansible/ansible
+   17  sudo apt-get update 
+   18  sudo apt-get install ansible 
+   19  ansible --version
+
+   # yum install ansible 
+
+   [defaults]
+
+# some basic default values...
+
+#inventory      = /etc/ansible/hosts
+#library        = /usr/share/my_modules/
+#module_utils   = /usr/share/my_module_utils/
+#remote_tmp     = ~/.ansible/tmp
+#local_tmp      = ~/.ansible/tmp
+#plugin_filters_cfg = /etc/ansible/plugin_filters.yml
+#forks          = 5
+#poll_interval  = 15
+#sudo_user      = root
+#ask_sudo_pass = True
+#ask_pass      = True
+#transport      = smart
+#remote_port    = 22
+#module_lang    = C
+#module_set_locale = False
+
+root@ansible:~# hostname
+ansible.ckk.cloud
+root@ansible:~# ansible -m ping all
+The authenticity of host '172.31.2.96 (172.31.2.96)' can't be established.
+ECDSA key fingerprint is SHA256:mqVdkCKRb0a1fjZuK8IFlkHNCh3DyBFB2SUGGMU6cJ4.
+Are you sure you want to continue connecting (yes/no)? yes
+host1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    }, 
+    "changed": false, 
+    "ping": "pong"
+}
+root@ansible:~# ansible -m ping host1
+host1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3"
+    }, 
+    "changed": false, 
+    "ping": "pong"
+}
+root@ansible:~# 
+root@ansible:~# ansible -m shell -a 'free -m' hosts
+ [WARNING]: Could not match supplied host pattern, ignoring: hosts
+
+ [WARNING]: No hosts matched, nothing to do
+
+root@ansible:~# ansible -m shell -a 'free -m' host1
+host1 | CHANGED | rc=0 >>
+              total        used        free      shared  buff/cache   available
+Mem:            983         114         461           0         408         729
+Swap:             0           0           0
+
+root@ansible:~# 
