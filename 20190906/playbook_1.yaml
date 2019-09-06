@@ -1,0 +1,11 @@
+---
+
+- hosts: host1
+  sudo: yes
+  name: Play 1
+  tasks:
+    - name: Execute Command 'Date'
+      command: date
+    - name: Execute Script on Server
+      script: test_script.sh
+      

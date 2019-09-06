@@ -1,0 +1,233 @@
+root@ansible:/etc/ansible/playbooks# history
+    1  cd
+    2  pwd
+    3  ls -lrta
+    4  ansible --version
+    5  ls -lrta .ssh/
+    6  ssh-keygen 
+    7  ls -lrta .ssh/
+    8  cat .ssh/id_rsa.pub 
+    9  ping 172.31.2.96
+   10  ping host1.ckk.cloud
+   11  vim /etc/hosts
+   12  cat /etc/hosts
+   13  ping host1.ckk.cloud
+   14  pwd
+   15  hostname
+   16  ansible -m ping all
+   17  ansible -m ping host1
+   18  ansible -m shell -a 'free -m' hosts
+   19  ansible -m shell -a 'free -m' host1
+   20  cd
+   21  pwd
+   22  cat /etc/hosts
+   23  cat /etc/ansible/hosts
+   24  history | grep host1
+   25  ls -lrt /etc/ansible/
+   26  ls -lrt /etc/ansible/host_vars/
+   27  cat /etc/ansible/host_vars/host1 
+   28  ls -lrta .ssh/id_rsa*
+   29  ansible -m ping host1
+   30  ping 172.31.2.96
+   31  ping host1.ckk.cloud
+   32  ansible -m shell -a 'free -m' host1
+   33  ansible -m shell -a 'df -TH' host1
+   34  ansible -m shell -a 'ls -lrt /' host1
+   35  ansible -m shell -a 'echo "Welcome to Ansible World >> /tmp/cm_tool.txt' host1
+   36  ansible -m shell -a 'echo "Welcome to Ansible World >> /tmp/cm_tool.txt" host1
+
+   37  ansible -m shell -a 'echo "touch /tmp/cm_tool.txt" host1
+
+
+   38  ansible -m shell -a 'touch /tmp/cm_tool.txt' host1
+   39  pwd
+   40  hostname
+   41  pwd
+   42  touch playbook_1.yaml
+   43  ls -lrt
+   44  vim playbook_1.yaml 
+   45  pwd
+   46  ls -lrt
+   47  rm -f playbook_1.yaml 
+   48  pwd
+   49  hostname
+   50  vi playbook
+   51  ls -lrt
+   52  mv playbook playbook.yaml
+   53  ls -lrt
+   54  cat playbook.yaml 
+   55  touch test_script.sh
+   56  ls -lrt
+   57  vi test_script.sh 
+   58  pwd
+   59  ls -lrt
+   60  cat playbook.yaml 
+   61  cat test_script.sh 
+   62  ansible --version
+   63  ansible-playbook -i host1 playbook.yaml 
+   64  ansible-playbook -i /etc/ansible/host_vars/host1 playbook.yaml 
+   65  pwd
+   66  ls -lrt /etc/ansible/
+   67  mkdir -p /etc/ansible/playbooks
+   68  ls -lrt /etc/ansible/
+   69  mv playbook.yaml /etc/ansible/playbooks/
+   70  mv test_script.sh /etc/ansible/playbooks/
+   71  pwd
+   72  cd /etc/ansible/
+   73  ls
+   74  cd playbooks/pwd
+   75  cd playbooks/
+   76  pwd
+   77  ls -lrt
+   78  ansible-playbook /etc/ansible/playbooks/playbook.yaml 
+   79  cat playbook.yaml 
+   80  pwd
+   81  cat test_script.sh 
+   82  mkdir /static_files/
+   83  ls -ld /static_files/
+   84  touch /static_files/index.html
+   85  pwd
+   86  vi /static_files/index.html 
+   87  cat /static_files/index.html 
+   88  pwd
+   89  ls -lrt
+   90  vi apache
+   91  ls -lrt
+   92  mv apache apache.yaml
+   93  pwd
+   94  ls -lrt
+   95  ls -lrt /static_files/index.html 
+   96  ansible-playbook apache.yaml --check
+   97  ansible-playbook apache.yaml --syntax-check
+   98  vi apache.yaml 
+   99  ansible-playbook apache.yaml --syntax-check
+  100  vi apache.yaml 
+  101  ansible-playbook apache.yaml --syntax-check
+  102  ansible-playbook apache.yaml
+
+
+  root@ansible:/etc/ansible/playbooks# ansible-playbook apache.yaml --check
+
+PLAY [host1] ********************************************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************************
+ok: [host1]
+
+TASK [ensure apache is at the latest version] ***********************************************************************************************
+ [WARNING]: Could not find aptitude. Using apt-get instead
+
+changed: [host1]
+
+TASK [replace default index.html file] ******************************************************************************************************
+changed: [host1]
+
+TASK [ensure apache is running (and enable it at boot)] *************************************************************************************
+changed: [host1]
+
+RUNNING HANDLER [restart apache2] ***********************************************************************************************************
+changed: [host1]
+
+PLAY RECAP **********************************************************************************************************************************
+host1                      : ok=5    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+root@ansible:/etc/ansible/playbooks# ansible-playbook apache.yaml --syntax-check
+
+playbook: apache.yaml
+root@ansible:/etc/ansible/playbooks# vi apache.yaml 
+root@ansible:/etc/ansible/playbooks# 
+root@ansible:/etc/ansible/playbooks# ansible-playbook apache.yaml --syntax-check
+ERROR! Syntax Error while loading YAML.
+  could not find expected ':'
+
+The error appears to be in '/etc/ansible/playbooks/apache.yaml': line 20, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+(specified line no longer in file, maybe it changed?)
+root@ansible:/etc/ansible/playbooks# vi apache.yaml 
+root@ansible:/etc/ansible/playbooks# 
+root@ansible:/etc/ansible/playbooks# ansible-playbook apache.yaml --syntax-check
+
+playbook: apache.yaml
+root@ansible:/etc/ansible/playbooks# 
+root@ansible:/etc/ansible/playbooks# ansible-playbook apache.yaml 
+
+PLAY [host1] ********************************************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************************
+ok: [host1]
+
+TASK [ensure apache is at the latest version] ***********************************************************************************************
+ [WARNING]: Could not find aptitude. Using apt-get instead
+
+changed: [host1]
+
+TASK [replace default index.html file] ******************************************************************************************************
+changed: [host1]
+
+TASK [ensure apache is running (and enable it at boot)] *************************************************************************************
+ok: [host1]
+
+RUNNING HANDLER [restart apache2] ***********************************************************************************************************
+changed: [host1]
+
+PLAY RECAP **********************************************************************************************************************************
+host1                      : ok=5    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+root@ansible:/etc/ansible/playbooks# ansible-playbook apache.yaml --check >> test.log
+ [WARNING]: Could not find aptitude. Using apt-get instead
+root@ansible:/etc/ansible/playbooks# 
+root@ansible:/etc/ansible/playbooks# ls -lrt
+total 16
+-rw-r--r-- 1 root root  177 Sep  6 01:56 playbook.yaml
+-rw-r--r-- 1 root root   64 Sep  6 01:57 test_script.sh
+-rw-r--r-- 1 root root  518 Sep  6 02:13 apache.yaml
+-rw-r--r-- 1 root root 1025 Sep  6 02:17 test.log
+root@ansible:/etc/ansible/playbooks# cat test.log 
+
+PLAY [host1] ********************************************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************************
+ok: [host1]
+
+TASK [ensure apache is at the latest version] ***********************************************************************************************
+ok: [host1]
+
+TASK [replace default index.html file] ******************************************************************************************************
+ok: [host1]
+
+TASK [ensure apache is running (and enable it at boot)] *************************************************************************************
+ok: [host1]
+
+PLAY RECAP **********************************************************************************************************************************
+host1                      : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+
+
+
+
+
+   
+   25  hostname
+   26  cat /etc/hosts
+   27  ls -lrta .ssh/id_rsa*
+   28  ls -lrta .ssh/
+   29  ls -lrt /tmp/cm_tool.txt 
+   30  pwd
+   31  ls -lrt /tmp/devops.txt 
+   32  cat /tmp/devops.txt 
+   33  systemctl status httpd.service
+   34  systemctl status apache2
+   35  ls -lrt /var/www/html
+   36  cat /var/www/html/index.html 
+
+
+
+devops01: dd84e6b91ae247141fdbc437d134ac44dbb3b9c6
+
+mvn sonar:sonar \
+  -Dsonar.projectKey=first_devops_project \
+  -Dsonar.host.url=http://13.235.245.107:9000 \
+  -Dsonar.login=dd84e6b91ae247141fdbc437d134ac44dbb3b9c6
+
+  
