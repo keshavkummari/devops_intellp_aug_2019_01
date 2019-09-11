@@ -1,0 +1,17 @@
+
+
+
+mvn sonar:sonar \
+  -Dsonar.projectKey=devopsfirstproject01 \
+  -Dsonar.organization=ckk \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=841257f78e224a2ba28f77a9db4787f522b620fc
+
+go to Jenkins(maven)
+
+.m2/
+
+settings.xml 
+
+
+mvn sonar:sonar -Dsonar.projectKey=devopsfirstproject01 -Dsonar.organization=ckk -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=841257f78e224a2ba28f77a9db4787f522b620fc

@@ -1,0 +1,23 @@
+
+c5adc77602dc9d31fb639e15dad6b26ed335a484
+
+mvn sonar:sonar \
+  -Dsonar.projectKey=devops01 \
+  -Dsonar.host.url=http://192.168.0.2:9000 \
+  -Dsonar.login=c5adc77602dc9d31fb639e15dad6b26ed335a484
+
+
+22ed15b96a364a89dd2d6b35f1362f421feffd6d
+
+mvn sonar:sonar \
+  -Dsonar.projectKey=devops01 \
+  -Dsonar.host.url=http://192.168.0.2:9000 \
+  -Dsonar.login=22ed15b96a364a89dd2d6b35f1362f421feffd6d
+
+
+  mvn sonar:sonar \
+  -Dsonar.projectKey=devops01 \
+  -Dsonar.organization=keshavkummari \
+  -Dsonar.host.url=https://sonarcloud.io \
+  -Dsonar.login=6fb898951bd5311efdbc27b82c7b525f98d443f8
+  
