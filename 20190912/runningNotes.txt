@@ -1,0 +1,19 @@
+
+Jenkins     : http://107.21.194.101:8080/
+    Hostname :  jenkins.ckk.cloud
+    Ipaddress:  107.21.194.101:8080 
+
+Sonarqube   : https://sonarcloud.io/organizations/ckk/projects 
+    Hostname : 
+    Ipaddress: 
+
+Jfrog       : http://3.87.146.133:8081/artifactory/webapp/
+    Hostname : jfrog.ckk.cloud
+    Ipaddress: 3.87.146.133:8081 
+
+Tomcat      : http://52.90.59.190:8080/
+    Hostname : tomcat.ckk.cloud
+    Ipaddress: 52.90.59.190:8080 
+
+curl -u admin:redhat@123 -T target/**.war "http://52.90.59.190:8080/manager/text/deploy?path=/devops$update=true"
+curl -u ${tcuser}:${tcpass} -T target/**.war "http://52.90.59.190:8080/manager/text/deploy?path=/devops$update=true"
