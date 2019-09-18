@@ -1,0 +1,183 @@
+
+Download, Install and Configure Puppet :
+
+STEP-1 : Launch a Linux Server i.e. Ubuntu 18.04
+
+STEP-2 : Update the Package Repo
+
+STEP-3 : Download Puppet and Install
+
+ubuntu@puppet-master:/opt$ history
+    1  hostname
+    2  ifconfig 
+    3  # 172.31.81.124 puppet-master.ckk.cloud 
+    4  sudo vi /etc/hosts 
+    5  cat /etc/hosts
+    6  sudo apt-get update
+    7  sudo apt-get install wget curl elinks vim -y
+    8  cd /opt
+    9  pwd
+   10  ls -lrt
+   11  sudo wget http://apt.puppetlabs.com/puppet-release-bionic.deb
+   12  ls -lrt
+   13  sudo dpkg -i puppet-release-bionic.deb 
+   14  sudo apt-get update
+   15  sudo apt-get policy puppet master
+   16  systemctl status puppet-master
+   17  sudo apt-get install puppet-master
+
+
+ubuntu@puppet-master:/etc/puppet$ history
+    1  hostname
+    2  ifconfig 
+    3  # 172.31.81.124 puppet-master.ckk.cloud 
+    4  sudo vi /etc/hosts 
+    5  cat /etc/hosts
+    6  sudo apt-get update
+    7  sudo apt-get install wget curl elinks vim -y
+    8  cd /opt
+    9  pwd
+   10  ls -lrt
+   11  sudo wget http://apt.puppetlabs.com/puppet-release-bionic.deb
+   12  ls -lrt
+   13  sudo dpkg -i puppet-release-bionic.deb 
+   14  sudo apt-get update
+   15  sudo apt-get policy puppet master
+   16  systemctl status puppet-master
+   17  sudo apt-get install puppet-master
+   18  history
+   19  systemctl status puppet-master
+   20  ls- lrt /etc/puppet/
+   21  ls -lrt /etc/puppet/
+   22  ls -lrt /etc/puppet/code/
+   23  cd /etc/puppet/code/
+   24  ls -lrt
+   25  mkdir environments
+   26  sudo mkdir environments 
+   27  ls -lrta
+   28  cd environments/
+   29  ls -lrt
+   30  mkdir dev
+   31  sudo mkdir production
+   32  ls -lrt
+   33  cd production/
+   34  ls -lrt
+   35  mkdir manifests
+   36  sudo mkdir manifests
+   37  pwd
+   38  ls -lrt
+   39  cd manifests/
+   40  pwd
+   41  ls -lrt /etc/puppet
+   42  apt-get install tree
+   43  sudo apt-get install tree
+   44  tree
+   45  cd /etc/puppet/
+   46  pwd
+   47  tree
+   48  tree /etc/default/puppet-master 
+   49  ls -lrt /etc/default/puppet-master 
+   50  cat /etc/default/puppet-master
+   51  ls -lrt /etc/init.d/puppet-master
+   52  sudo cp -pv /etc/init.d/puppet-master /etc/init.d/puppet-master_20190918
+   53  sudo cp -pv /etc/default/puppet-master /etc/default/puppet-master_20190918_V1.0
+   54  sudo vim /etc/default/puppet-master
+   55  cat /etc/default/puppet-master 
+   56  echo $JAVA_ARGS
+   57  source /etc/default/puppet-master
+   58  echo $JAVA_ARGS
+   59  # Port - 8140
+   60  sudo systemctl status puppet-master
+   61  sudo systemctl restart puppet-master
+   62  sudo systemctl status puppet-master
+
+80  ls --lrt /etc/puppet/puppet.conf 
+   81  sudo cp -pv /etc/puppet/puppet.conf /etc/puppet/puppet.conf_20190918
+   82  sudo vi /etc/puppet/puppet.conf
+   83  sudo systemctl status puppet-master
+   84  sudo systemctl restart puppet-master
+   85  sudo systemctl status puppet-master
+   86  top
+   87  cat /etc/hosts
+   88  sudo vi /etc/hosts
+   89  top
+   90  cd
+   91  hostname
+   92  sudo /etc/puppet/
+   93  ls -lrt /etc/puppet/
+   94  puppet ca list
+   95  pwd
+   96  cd /etc/puppet/
+   97  ls -lrt
+   98  cd code/
+   99  ls
+  100  cd environments/
+  101  ls
+  102  cd production/
+  103  ls
+  104  cd manifests/
+  105  touch nginx.pp
+  106  sudo touch nginx.pp
+  107  pwd
+  108  ls -lrta
+  109  cat nginx.pp 
+  110  sudo vi nginx.pp 
+  111  cat nginx.pp 
+  112  puppet agent --test
+
+
+
+   Agent:
+
+   ubuntu@puppet-agent:~$ history
+    1  hostname
+    2  ifconfig
+    3  # 172.31.80.66 puppet-agent.ckk.cloud 
+    4  sudo vi /etc/hosts 
+    5  cat /etc/hosts
+    6  sudo apt-get install wget curl elinks vim -y
+    7  sudo apt-get update
+    8  sudo apt-get install wget curl elinks vim -y
+    9  sudo wget http://apt.puppetlabs.com/puppet-release-bionic.deb
+   10  sudo dpkg -i puppet-release-bionic.deb
+   11  sudo apt-get update
+   12  sudo apt-get install puppet-agent
+   13  sudo systemctl status puppet-agent
+   14  sudo systemctl status puppet
+   15  sudo systemctl status puppet.service
+   16  sudo apt-get install puppet
+   17  sudo systemlctl status puppet.service
+   18  sudo systemctl status puppet.service
+   19  cat /etc/hosts
+   20  ls -lrt /etc/puppet*
+   21  ls -lrt /etc/puppetlabs/
+   22  ls -lrt /etc/puppetlabs/puppet/
+   23  ls -lrt /etc/puppetlabs/puppet/puppet.conf 
+   24  sudo cp -pv /etc/puppetlabs/puppet/puppet.conf /etc/puppetlabs/puppet/puppet.conf_20190918
+   25  sudo vi /etc/puppetlabs/puppet/puppet.conf
+   26  sudo systemctl start puppet
+   27  sudo systemctl enable puppet
+   28  sudo systemctl status puppet
+   29  cat /etc/hosts
+   30  sudo vi /etc/hosts
+   31  cat /etc/hosts
+   32  top
+   33  hostname
+   34  puppet agent -t
+   35  sudo apt install puppet
+   36  puppet agent -t
+   37  sudo apt-get install puppet-agent
+   38  hostname
+   39  systemctl status puppet-agent.service
+   40  systemctl status puppet.service
+   41  sudo /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
+   42  cat /etc/puppetlabs/puppet/puppet.conf
+   43  hostname
+   44  sudo vim /etc/puppetlabs/puppet/puppet.conf
+   45  sudo systemctl start puppet
+   46  sudo systemctl status puppet
+   47  puppet ca list
+   48  puppet agent -t
+   49  puppetlabs agent -t
+   50  history
+ubuntu@puppet-agent:~$ 
