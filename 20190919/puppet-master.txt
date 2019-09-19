@@ -1,0 +1,542 @@
+Keshavs-MacBook-Pro:Downloads keshavkummari$ pwd
+/Users/keshavkummari/Downloads
+Keshavs-MacBook-Pro:Downloads keshavkummari$ ssh -i "amazonKeys.pem" ubuntu@ec2-3-80-212-156.compute-1.amazonaws.com
+The authenticity of host 'ec2-3-80-212-156.compute-1.amazonaws.com (3.80.212.156)' can't be established.
+ECDSA key fingerprint is SHA256:SFdOP6049SUpy514mOFB02WRDlm7Tg48ERoeLEdS3po.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added 'ec2-3-80-212-156.compute-1.amazonaws.com,3.80.212.156' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1044-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Sep 19 02:26:05 UTC 2019
+
+  System load:  0.18              Processes:           91
+  Usage of /:   18.0% of 7.69GB   Users logged in:     0
+  Memory usage: 20%               IP address for eth0: 172.31.86.130
+  Swap usage:   0%
+
+
+67 packages can be updated.
+27 updates are security updates.
+
+
+Last login: Wed Sep 18 17:32:27 2019 from 183.83.174.77
+ubuntu@puppet-master:~$ sudo su
+root@puppet-master:/home/ubuntu# cd
+root@puppet-master:~# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+root@puppet-master:~# hostname
+puppet-master.ckk.cloud
+root@puppet-master:~# 
+root@puppet-master:~# hostname
+puppet-master.ckk.cloud
+root@puppet-master:~# cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+172.31.86.130 puppet-master.ckk.cloud
+172.31.81.10 puppet-agent.ckk.cloud
+root@puppet-master:~# systemctl status puppet
+● puppet.service - Puppet agent
+   Loaded: loaded (/lib/systemd/system/puppet.service; disabled; vendor preset: enabled)
+   Active: inactive (dead)
+     Docs: man:puppet-agent(8)
+root@puppet-master:~# systemctl status puppetmaster
+● puppet-master.service - Puppet master
+   Loaded: loaded (/lib/systemd/system/puppet-master.service; enabled; vendor preset: enabled)
+   Active: active (running) since Thu 2019-09-19 02:24:16 UTC; 3min 23s ago
+     Docs: man:puppet-master(8)
+ Main PID: 1157 (puppet)
+    Tasks: 3 (limit: 1152)
+   CGroup: /system.slice/puppet-master.service
+           └─1157 /usr/bin/ruby /usr/bin/puppet master
+
+Sep 19 02:24:11 puppet-master.ckk.cloud systemd[1]: Starting Puppet master...
+Sep 19 02:24:16 puppet-master.ckk.cloud puppet-master[755]: The WEBrick Puppet master server is deprecated and will be removed in a future re
+Sep 19 02:24:16 puppet-master.ckk.cloud puppet-master[755]:    (location: /usr/lib/ruby/vendor_ruby/puppet/application/master.rb:207:in `main
+Sep 19 02:24:16 puppet-master.ckk.cloud puppet-master[1157]: Reopening log files
+Sep 19 02:24:16 puppet-master.ckk.cloud puppet-master[1157]: Starting Puppet master version 5.4.0
+Sep 19 02:24:16 puppet-master.ckk.cloud systemd[1]: Started Puppet master.
+root@puppet-master:~# 
+root@puppet-master:~# 
+root@puppet-master:~# apt policy puppetmaster
+puppetmaster:
+  Installed: 5.4.0-2ubuntu3
+  Candidate: 5.4.0-2ubuntu3
+  Version table:
+ *** 5.4.0-2ubuntu3 500
+        500 http://us-east-1.ec2.archive.ubuntu.com/ubuntu bionic/universe amd64 Packages
+        100 /var/lib/dpkg/status
+root@puppet-master:~# 
+root@puppet-master:~# 
+root@puppet-master:~# ls -lrt /etc/default/puppet-master 
+-rw-r--r-- 1 root root 143 Feb 22  2018 /etc/default/puppet-master
+root@puppet-master:~# 
+root@puppet-master:~# cat /etc/default/puppet-master
+# Defaults for puppetmaster - sourced by /etc/init.d/puppet-master
+
+# Start puppetmaster on boot?
+START=yes
+
+# Startup options.
+DAEMON_OPTS=""
+root@puppet-master:~# vi /etc/default/puppet-master 
+root@puppet-master:~# 
+root@puppet-master:~# systemctl restart puppet-master
+root@puppet-master:~# 
+root@puppet-master:~# systemctl status puppet-master
+● puppet-master.service - Puppet master
+   Loaded: loaded (/lib/systemd/system/puppet-master.service; enabled; vendor preset: enabled)
+   Active: active (running) since Thu 2019-09-19 02:29:59 UTC; 8s ago
+     Docs: man:puppet-master(8)
+  Process: 1907 ExecStart=/usr/bin/puppet master (code=exited, status=0/SUCCESS)
+ Main PID: 1932 (puppet)
+    Tasks: 3 (limit: 1152)
+   CGroup: /system.slice/puppet-master.service
+           └─1932 /usr/bin/ruby /usr/bin/puppet master
+
+Sep 19 02:29:58 puppet-master.ckk.cloud systemd[1]: Stopped Puppet master.
+Sep 19 02:29:58 puppet-master.ckk.cloud systemd[1]: Starting Puppet master...
+Sep 19 02:29:59 puppet-master.ckk.cloud puppet-master[1907]: The WEBrick Puppet master server is deprecated and will be removed in a future r
+Sep 19 02:29:59 puppet-master.ckk.cloud puppet-master[1907]:    (location: /usr/lib/ruby/vendor_ruby/puppet/application/master.rb:207:in `mai
+Sep 19 02:29:59 puppet-master.ckk.cloud puppet-master[1932]: Reopening log files
+Sep 19 02:29:59 puppet-master.ckk.cloud puppet-master[1932]: Starting Puppet master version 5.4.0
+Sep 19 02:29:59 puppet-master.ckk.cloud systemd[1]: Started Puppet master.
+root@puppet-master:~# 
+root@puppet-master:~# 
+root@puppet-master:~# echo $JAVA_ARGS
+
+root@puppet-master:~# source /etc/default/puppet-master 
+root@puppet-master:~# 
+root@puppet-master:~# echo $JAVA_ARGS
+-Xms1024m -Xmx1024m
+root@puppet-master:~# 
+root@puppet-master:~# 
+root@puppet-master:~# cd /etc/puppet/
+root@puppet-master:/etc/puppet# ls -lrt
+total 24
+-rw-r--r-- 1 root root 5401 Feb 22  2018 auth.conf
+-rw-r--r-- 1 root root  126 Feb 22  2018 puppet.conf
+-rw-r--r-- 1 root root  120 Feb 22  2018 hiera.yaml
+drwxr-xr-x 3 root root 4096 Sep 18 17:35 modules
+drwxr-xr-x 3 root root 4096 Sep 18 17:38 code
+root@puppet-master:/etc/puppet# cd modules/
+root@puppet-master:/etc/puppet/modules# ls -lrt
+total 4
+drwxr-xr-x 3 root root 4096 Sep 18 17:35 apache2
+root@puppet-master:/etc/puppet/modules# cd apache2/
+root@puppet-master:/etc/puppet/modules/apache2# ls
+manifests
+root@puppet-master:/etc/puppet/modules/apache2# ls -lrt
+total 4
+drwxr-xr-x 2 root root 4096 Sep 18 17:36 manifests
+root@puppet-master:/etc/puppet/modules/apache2# cd manifests/
+root@puppet-master:/etc/puppet/modules/apache2/manifests# ls -lrt
+total 4
+-rw-r--r-- 1 root root 175 Sep 18 17:36 init.pp
+root@puppet-master:/etc/puppet/modules/apache2/manifests# cat init.pp 
+class apache2 {
+  package { 'apache2':
+    ensure => installed,
+  }
+
+  service { 'apache2':
+    ensure  => true,
+    enable  => true,
+    require => Package['apache2'],
+  }
+}
+root@puppet-master:/etc/puppet/modules/apache2/manifests# pwd
+/etc/puppet/modules/apache2/manifests
+root@puppet-master:/etc/puppet/modules/apache2/manifests# cd ../../../
+root@puppet-master:/etc/puppet# pwd
+/etc/puppet
+root@puppet-master:/etc/puppet# ls -lrt
+total 24
+-rw-r--r-- 1 root root 5401 Feb 22  2018 auth.conf
+-rw-r--r-- 1 root root  126 Feb 22  2018 puppet.conf
+-rw-r--r-- 1 root root  120 Feb 22  2018 hiera.yaml
+drwxr-xr-x 3 root root 4096 Sep 18 17:35 modules
+drwxr-xr-x 3 root root 4096 Sep 18 17:38 code
+root@puppet-master:/etc/puppet# mkdir manifests
+root@puppet-master:/etc/puppet# ls -lrt
+total 28
+-rw-r--r-- 1 root root 5401 Feb 22  2018 auth.conf
+-rw-r--r-- 1 root root  126 Feb 22  2018 puppet.conf
+-rw-r--r-- 1 root root  120 Feb 22  2018 hiera.yaml
+drwxr-xr-x 3 root root 4096 Sep 18 17:35 modules
+drwxr-xr-x 3 root root 4096 Sep 18 17:38 code
+drwxr-xr-x 2 root root 4096 Sep 19 02:32 manifests
+root@puppet-master:/etc/puppet# cd manifests/
+root@puppet-master:/etc/puppet/manifests# ls -lrt
+total 0
+root@puppet-master:/etc/puppet/manifests# touch site.pp
+root@puppet-master:/etc/puppet/manifests# ls -lrt
+total 0
+-rw-r--r-- 1 root root 0 Sep 19 02:33 site.pp
+root@puppet-master:/etc/puppet/manifests# cat site.pp 
+root@puppet-master:/etc/puppet/manifests# vi site.pp 
+root@puppet-master:/etc/puppet/manifests# 
+root@puppet-master:/etc/puppet/manifests# cat site.pp 
+node 'puppet-agent.ckk.cloud' {
+ 
+   include nginx
+
+
+}
+root@puppet-master:/etc/puppet/manifests# cd /etc/puppet/modules/apache2/manifests
+root@puppet-master:/etc/puppet/modules/apache2/manifests# ls -lrt
+total 4
+-rw-r--r-- 1 root root 175 Sep 18 17:36 init.pp
+root@puppet-master:/etc/puppet/modules/apache2/manifests# mv init.pp_1
+mv: missing destination file operand after 'init.pp_1'
+Try 'mv --help' for more information.
+root@puppet-master:/etc/puppet/modules/apache2/manifests# mv init.pp  init.pp_apache
+root@puppet-master:/etc/puppet/modules/apache2/manifests# 
+root@puppet-master:/etc/puppet/modules/apache2/manifests# vi init.pp
+root@puppet-master:/etc/puppet/modules/apache2/manifests# 
+root@puppet-master:/etc/puppet/modules/apache2/manifests# cat init.pp
+class nginx {
+  package { 'nginx':
+    ensure => installed,
+  }
+
+  service { 'nginx':
+    ensure  => true,
+    enable  => true,
+    require => Package['nginx'],
+  }
+}
+root@puppet-master:/etc/puppet/modules/apache2/manifests# pwd
+/etc/puppet/modules/apache2/manifests
+root@puppet-master:/etc/puppet/modules/apache2/manifests# cd ../../
+root@puppet-master:/etc/puppet/modules# pwd
+/etc/puppet/modules
+root@puppet-master:/etc/puppet/modules# mkdir nginx
+root@puppet-master:/etc/puppet/modules# ls -lrt
+total 8
+drwxr-xr-x 3 root root 4096 Sep 18 17:35 apache2
+drwxr-xr-x 2 root root 4096 Sep 19 02:35 nginx
+root@puppet-master:/etc/puppet/modules# cd nginx/
+root@puppet-master:/etc/puppet/modules/nginx# ls -lrt
+total 0
+root@puppet-master:/etc/puppet/modules/nginx# mkdir manifests
+root@puppet-master:/etc/puppet/modules/nginx# ls -lrt
+total 4
+drwxr-xr-x 2 root root 4096 Sep 19 02:36 manifests
+root@puppet-master:/etc/puppet/modules/nginx# cd manifests/
+root@puppet-master:/etc/puppet/modules/nginx/manifests# pwd
+/etc/puppet/modules/nginx/manifests
+root@puppet-master:/etc/puppet/modules/nginx/manifests# ls -lrt
+total 0
+root@puppet-master:/etc/puppet/modules/nginx/manifests# cp -pv /etc/puppet/modules/apache2/manifests/init.pp .
+'/etc/puppet/modules/apache2/manifests/init.pp' -> './init.pp'
+root@puppet-master:/etc/puppet/modules/nginx/manifests# ls -lrt
+total 4
+-rw-r--r-- 1 root root 167 Sep 19 02:35 init.pp
+root@puppet-master:/etc/puppet/modules/nginx/manifests# pwd
+/etc/puppet/modules/nginx/manifests
+root@puppet-master:/etc/puppet/modules/nginx/manifests# cat init.pp 
+class nginx {
+  package { 'nginx':
+    ensure => installed,
+  }
+
+  service { 'nginx':
+    ensure  => true,
+    enable  => true,
+    require => Package['nginx'],
+  }
+}
+root@puppet-master:/etc/puppet/modules/nginx/manifests# ls -lrt /etc/puppet/manifests/
+total 4
+-rw-r--r-- 1 root root 55 Sep 19 02:34 site.pp
+root@puppet-master:/etc/puppet/modules/nginx/manifests# cat /etc/puppet/manifests/site.pp 
+node 'puppet-agent.ckk.cloud' {
+ 
+   include nginx
+
+
+}
+root@puppet-master:/etc/puppet/modules/nginx/manifests# 
+root@puppet-master:/etc/puppet/modules/nginx/manifests# pwd
+/etc/puppet/modules/nginx/manifests
+root@puppet-master:/etc/puppet/modules/nginx/manifests# cd
+root@puppet-master:~# 
+root@puppet-master:~# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+root@puppet-master:~# pwd
+/root
+root@puppet-master:~# hostname
+puppet-master.ckk.cloud
+root@puppet-master:~# 
+root@puppet-master:~# cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+172.31.86.130 puppet-master.ckk.cloud
+172.31.81.10 puppet-agent.ckk.cloud
+root@puppet-master:~# 
+root@puppet-master:~# systemctl status puppet-master.service
+● puppet-master.service - Puppet master
+   Loaded: loaded (/lib/systemd/system/puppet-master.service; enabled; vendor preset: enabled)
+   Active: active (running) since Thu 2019-09-19 02:29:59 UTC; 7min ago
+     Docs: man:puppet-master(8)
+  Process: 1907 ExecStart=/usr/bin/puppet master (code=exited, status=0/SUCCESS)
+ Main PID: 1932 (puppet)
+    Tasks: 3 (limit: 1152)
+   CGroup: /system.slice/puppet-master.service
+           └─1932 /usr/bin/ruby /usr/bin/puppet master
+
+Sep 19 02:29:58 puppet-master.ckk.cloud systemd[1]: Stopped Puppet master.
+Sep 19 02:29:58 puppet-master.ckk.cloud systemd[1]: Starting Puppet master...
+Sep 19 02:29:59 puppet-master.ckk.cloud puppet-master[1907]: The WEBrick Puppet master server is deprecated and will be removed in a future r
+Sep 19 02:29:59 puppet-master.ckk.cloud puppet-master[1907]:    (location: /usr/lib/ruby/vendor_ruby/puppet/application/master.rb:207:in `mai
+Sep 19 02:29:59 puppet-master.ckk.cloud puppet-master[1932]: Reopening log files
+Sep 19 02:29:59 puppet-master.ckk.cloud puppet-master[1932]: Starting Puppet master version 5.4.0
+Sep 19 02:29:59 puppet-master.ckk.cloud systemd[1]: Started Puppet master.
+root@puppet-master:~# 
+root@puppet-master:~# ls -lrt /etc/puppet/
+total 28
+-rw-r--r-- 1 root root 5401 Feb 22  2018 auth.conf
+-rw-r--r-- 1 root root  126 Feb 22  2018 puppet.conf
+-rw-r--r-- 1 root root  120 Feb 22  2018 hiera.yaml
+drwxr-xr-x 3 root root 4096 Sep 18 17:38 code
+drwxr-xr-x 2 root root 4096 Sep 19 02:34 manifests
+drwxr-xr-x 4 root root 4096 Sep 19 02:35 modules
+root@puppet-master:~# 
+root@puppet-master:~# tree 
+.
+└── snap
+    └── amazon-ssm-agent
+        ├── 1455
+        ├── common
+        └── current -> 1455
+
+5 directories, 0 files
+root@puppet-master:~# tree /etc/puppet/
+/etc/puppet/
+├── auth.conf
+├── code
+│   └── environments
+│       └── production
+│           └── manifests
+│               └── site.pp
+├── hiera.yaml
+├── manifests
+│   └── site.pp
+├── modules
+│   ├── apache2
+│   │   └── manifests
+│   │       ├── init.pp
+│   │       └── init.pp_apache
+│   └── nginx
+│       └── manifests
+│           └── init.pp
+└── puppet.conf
+
+10 directories, 8 files
+root@puppet-master:~# cat /etc/puppet/modules/nginx/manifests/init.pp 
+class nginx {
+  package { 'nginx':
+    ensure => installed,
+  }
+
+  service { 'nginx':
+    ensure  => true,
+    enable  => true,
+    require => Package['nginx'],
+  }
+}
+root@puppet-master:~# cat /etc/puppet/manifests/site.pp 
+node 'puppet-agent.ckk.cloud' {
+ 
+   include nginx
+
+
+}
+root@puppet-master:~# systemctl restart puppet-master
+root@puppet-master:~# 
+root@puppet-master:~# systemctl status puppet-master
+● puppet-master.service - Puppet master
+   Loaded: loaded (/lib/systemd/system/puppet-master.service; enabled; vendor preset: enabled)
+   Active: active (running) since Thu 2019-09-19 02:42:02 UTC; 7s ago
+     Docs: man:puppet-master(8)
+  Process: 2004 ExecStart=/usr/bin/puppet master (code=exited, status=0/SUCCESS)
+ Main PID: 2030 (puppet)
+    Tasks: 3 (limit: 1152)
+   CGroup: /system.slice/puppet-master.service
+           └─2030 /usr/bin/ruby /usr/bin/puppet master
+
+Sep 19 02:42:01 puppet-master.ckk.cloud systemd[1]: Stopped Puppet master.
+Sep 19 02:42:01 puppet-master.ckk.cloud systemd[1]: Starting Puppet master...
+Sep 19 02:42:02 puppet-master.ckk.cloud puppet-master[2004]: The WEBrick Puppet master server is deprecated and will be removed in a future r
+Sep 19 02:42:02 puppet-master.ckk.cloud puppet-master[2004]:    (location: /usr/lib/ruby/vendor_ruby/puppet/application/master.rb:207:in `mai
+Sep 19 02:42:02 puppet-master.ckk.cloud puppet-master[2030]: Reopening log files
+Sep 19 02:42:02 puppet-master.ckk.cloud puppet-master[2030]: Starting Puppet master version 5.4.0
+Sep 19 02:42:02 puppet-master.ckk.cloud systemd[1]: Started Puppet master.
+root@puppet-master:~# 
+root@puppet-master:~# 
+root@puppet-master:~# puppet cert list
+  "puppet-agent" (SHA256) 40:D1:40:CC:2D:34:6A:C0:8D:B2:16:44:17:9A:15:A1:F1:73:AF:18:C2:3B:9F:74:6E:11:D7:F1:1C:15:F1:87
+root@puppet-master:~# 
+root@puppet-master:~# puppet cert sign puppet-agent
+Signing Certificate Request for:
+  "puppet-agent" (SHA256) 40:D1:40:CC:2D:34:6A:C0:8D:B2:16:44:17:9A:15:A1:F1:73:AF:18:C2:3B:9F:74:6E:11:D7:F1:1C:15:F1:87
+Notice: Signed certificate request for puppet-agent
+Notice: Removing file Puppet::SSL::CertificateRequest puppet-agent at '/var/lib/puppet/ssl/ca/requests/puppet-agent.pem'
+root@puppet-master:~# 
+root@puppet-master:~# # puppet cert sign --all 
+root@puppet-master:~# 
+root@puppet-master:~# 
+root@puppet-master:~# tree /etc/puppet/
+/etc/puppet/
+├── auth.conf
+├── code
+│   └── environments
+│       └── production
+│           └── manifests
+│               └── site.pp
+├── hiera.yaml
+├── manifests
+│   └── site.pp
+├── modules
+│   ├── apache2
+│   │   └── manifests
+│   │       ├── init.pp
+│   │       └── init.pp_apache
+│   └── nginx
+│       └── manifests
+│           └── init.pp
+└── puppet.conf
+
+10 directories, 8 files
+root@puppet-master:~# vim /etc/puppet/code/environments/production/manifests/site.pp 
+root@puppet-master:~# vim /etc/puppet/code/environments/production/manifests/site.pp 
+root@puppet-master:~# 
+root@puppet-master:~# cd /etc/puppet/modules/apache2/manifests/
+root@puppet-master:/etc/puppet/modules/apache2/manifests# ls -lrt
+total 8
+-rw-r--r-- 1 root root 175 Sep 18 17:36 init.pp_apache
+-rw-r--r-- 1 root root 167 Sep 19 02:35 init.pp
+root@puppet-master:/etc/puppet/modules/apache2/manifests# cat init.pp
+class nginx {
+  package { 'nginx':
+    ensure => installed,
+  }
+
+  service { 'nginx':
+    ensure  => true,
+    enable  => true,
+    require => Package['nginx'],
+  }
+}
+root@puppet-master:/etc/puppet/modules/apache2/manifests# cat init.pp_apache 
+class apache2 {
+  package { 'apache2':
+    ensure => installed,
+  }
+
+  service { 'apache2':
+    ensure  => true,
+    enable  => true,
+    require => Package['apache2'],
+  }
+}
+root@puppet-master:/etc/puppet/modules/apache2/manifests# rm -f init.pp
+root@puppet-master:/etc/puppet/modules/apache2/manifests# mv init.pp_apache init.pp
+root@puppet-master:/etc/puppet/modules/apache2/manifests# 
+root@puppet-master:/etc/puppet/modules/apache2/manifests# pwd
+/etc/puppet/modules/apache2/manifests
+root@puppet-master:/etc/puppet/modules/apache2/manifests# ls -lrt
+total 4
+-rw-r--r-- 1 root root 175 Sep 18 17:36 init.pp
+root@puppet-master:/etc/puppet/modules/apache2/manifests# cat init.pp 
+class apache2 {
+  package { 'apache2':
+    ensure => installed,
+  }
+
+  service { 'apache2':
+    ensure  => true,
+    enable  => true,
+    require => Package['apache2'],
+  }
+}
+root@puppet-master:/etc/puppet/modules/apache2/manifests# cd ../../code/
+bash: cd: ../../code/: No such file or directory
+root@puppet-master:/etc/puppet/modules/apache2/manifests# cd ../../../code/environments/production/manifests/
+root@puppet-master:/etc/puppet/code/environments/production/manifests# ls -lrt
+total 4
+-rw-r--r-- 1 root root 53 Sep 18 17:38 site.pp
+root@puppet-master:/etc/puppet/code/environments/production/manifests# cat site.pp 
+node 'puppet-agent.ckk.cloud' {
+   include apache2
+}
+root@puppet-master:/etc/puppet/code/environments/production/manifests# vi site.pp 
+root@puppet-master:/etc/puppet/code/environments/production/manifests#

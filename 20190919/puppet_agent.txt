@@ -1,0 +1,147 @@
+
+
+Last login: Thu Sep 19 07:56:28 on ttys002
+Keshavs-MBP-dc06:Downloads keshavkummari$ ssh -i "amazonKeys.pem" ubuntu@ec2-35-174-115-201.compute-1.amazonaws.com
+Welcome to Ubuntu 18.04.2 LTS (GNU/Linux 4.15.0-1044-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Thu Sep 19 02:40:08 UTC 2019
+
+  System load:  0.0               Processes:           93
+  Usage of /:   18.0% of 7.69GB   Users logged in:     1
+  Memory usage: 16%               IP address for eth0: 172.31.81.10
+  Swap usage:   0%
+
+ * Congrats to the Kubernetes community on 1.16 beta 1! Now available
+   in MicroK8s for evaluation and testing, with upgrades to RC and GA
+
+     snap info microk8s
+
+67 packages can be updated.
+27 updates are security updates.
+
+
+Last login: Thu Sep 19 02:26:37 2019 from 27.59.135.94
+ubuntu@puppet-agent:~$ sudo su
+root@puppet-agent:/home/ubuntu# cd
+root@puppet-agent:~# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+root@puppet-agent:~# 
+root@puppet-agent:~# systemctl status nginx
+Unit nginx.service could not be found.
+root@puppet-agent:~# 
+root@puppet-agent:~# 
+root@puppet-agent:~# hostname
+puppet-agent.ckk.cloud
+root@puppet-agent:~# 
+root@puppet-agent:~# cat /etc/hosts
+127.0.0.1 localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+
+172.31.81.10 puppet-agent.ckk.cloud
+172.31.86.130 puppet-master.ckk.cloud
+root@puppet-agent:~# 
+root@puppet-agent:~# systemctl status puppet.service
+● puppet.service - Puppet agent
+   Loaded: loaded (/lib/systemd/system/puppet.service; disabled; vendor preset: enabled)
+   Active: inactive (dead)
+     Docs: man:puppet-agent(8)
+root@puppet-agent:~# 
+root@puppet-agent:~# ls -lrt /etc/puppet/puppet.conf 
+-rw-r--r-- 1 root root 126 Feb 22  2018 /etc/puppet/puppet.conf
+root@puppet-agent:~# 
+root@puppet-agent:~# cat /etc/puppet/puppet.conf 
+[main]
+ssldir = /var/lib/puppet/ssl
+
+[master]
+vardir = /var/lib/puppet
+cadir  = /var/lib/puppet/ssl/ca
+dns_alt_names = puppet
+root@puppet-agent:~# vi /etc/puppet/puppet.conf 
+
+[No write since last change]
+puppet-agent.ckk.cloud
+
+Press ENTER or type command to continue
+root@puppet-agent:~# 
+root@puppet-agent:~# cat /etc/puppet/puppet.conf 
+[main]
+ssldir = /var/lib/puppet/ssl
+
+certname = puppet-agent
+server = puppet-master.ckk.cloud
+
+[master]
+vardir = /var/lib/puppet
+cadir  = /var/lib/puppet/ssl/ca
+dns_alt_names = puppet
+root@puppet-agent:~# hostname
+puppet-agent.ckk.cloud
+root@puppet-agent:~# systemctl status puppet.service
+● puppet.service - Puppet agent
+   Loaded: loaded (/lib/systemd/system/puppet.service; disabled; vendor preset: enabled)
+   Active: inactive (dead)
+     Docs: man:puppet-agent(8)
+root@puppet-agent:~# 
+root@puppet-agent:~# systemctl enable puppet.service
+Synchronizing state of puppet.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable puppet
+root@puppet-agent:~# 
+root@puppet-agent:~# systemctl status puppet.service
+● puppet.service - Puppet agent
+   Loaded: loaded (/lib/systemd/system/puppet.service; enabled; vendor preset: enabled)
+   Active: inactive (dead)
+     Docs: man:puppet-agent(8)
+root@puppet-agent:~# 
+root@puppet-agent:~# systemctl start puppet.service
+root@puppet-agent:~# 
+root@puppet-agent:~# systemctl status puppet.service
+● puppet.service - Puppet agent
+   Loaded: loaded (/lib/systemd/system/puppet.service; enabled; vendor preset: enabled)
+   Active: active (running) since Thu 2019-09-19 02:45:33 UTC; 6s ago
+     Docs: man:puppet-agent(8)
+  Process: 2072 ExecStart=/usr/bin/puppet agent (code=exited, status=0/SUCCESS)
+ Main PID: 2094 (puppet)
+    Tasks: 2 (limit: 1152)
+   CGroup: /system.slice/puppet.service
+           └─2094 /usr/bin/ruby /usr/bin/puppet agent
+
+Sep 19 02:45:31 puppet-agent.ckk.cloud systemd[1]: Starting Puppet agent...
+Sep 19 02:45:33 puppet-agent.ckk.cloud puppet-agent[2094]: Reopening log files
+Sep 19 02:45:33 puppet-agent.ckk.cloud systemd[1]: Started Puppet agent.
+root@puppet-agent:~# 
+root@puppet-agent:~# puppet agent --test
+Info: Caching certificate for puppet-agent
+Info: Caching certificate_revocation_list for ca
+Info: Caching certificate for puppet-agent
+Info: Using configured environment 'production'
+Info: Retrieving pluginfacts
+Info: Retrieving plugin
+Info: Retrieving locales
+Error: Could not retrieve catalog from remote server: Error 500 on SERVER: Server Error: Evaluation Error: Error while evaluating a Function Call, Could not find class ::apache2 for puppet-agent (file: /etc/puppet/code/environments/production/manifests/site.pp, line: 2, column: 4) on node puppet-agent
+Warning: Not using cache on failed catalog
+Error: Could not retrieve catalog; skipping run

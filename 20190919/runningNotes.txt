@@ -1,0 +1,19 @@
+
+Nagios on CentOS7:
+
+# curl https://assets.nagios.com/downloads/nagiosxi/install.sh | sh
+
+STEP-1 : cd /tmp
+
+STEP-2 : wget https://assets.nagios.com/downloads/nagiosxi/xi-latest.tar.gz
+
+STEP-3 : tar xzf xi-latest.tar.gz
+
+STEP-4 : cd nagiosxi
+
+STEP-5 : ./fullinstall
+
+STEP-6 : http://34.201.162.211
+
+STEP-7 : Setup Email Notifications 
+https://assets.nagios.com/downloads/nagiosxi/docs/Configuring-Email-And-Text-Notifications-in-Nagios-XI.pdf
