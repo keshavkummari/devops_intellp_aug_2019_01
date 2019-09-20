@@ -1,0 +1,12 @@
+[root@ip-172-31-18-159 ec2-user]# history
+    1  yum install ntp
+    2  systemctl start ntpd
+    3  systemctl enable ntpd
+    4  systemctl status ntpd
+    5  ntpq -p
+    6  date -R
+    7  date
+    8  timedatectl set-timezone Asia/Kolkata
+    9  date
+   10  rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+   

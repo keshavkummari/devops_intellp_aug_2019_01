@@ -1,0 +1,27 @@
+[root@ip-172-31-31-33 ~]# history
+    1  cd
+    2  yum install ntp
+    3  systemctl status ntpd
+    4  systemctl status ntpd
+    5  systemctl enable ntpd
+    6  systemctl restart ntpd
+    7  systemctl status ntpd
+    8  hostname
+    9  ntpq -p
+   10  date -R
+   11  timedatectl | grep Asia
+   12  timedatectl timezone
+   13  timedatectl time-zones
+   14  timedatectl  list-timezones
+   15  timedatectl  list-timezones | grep Asia/Ko
+   16  timedatectl set-timezone Asia/Kolkata
+   17  date
+   18  rpm -ivh http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
+   19  yum install puppet-server
+   20  cd
+   21  puppet resource package puppet-server ensure=latest
+   22  history
+   23  hostnamectl set-hostname "puppet-master.ckk.cloud"
+   24  ifconfig
+   25  echo 172.31.31.33 puppet-master.ckk.cloud >> /etc/hosts
+   26  cat /etc/hosts

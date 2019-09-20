@@ -1,0 +1,76 @@
+
+
+Cloud : AWS 
+
+    - Ubuntu 18.04 Instance :
+    Will Creaet IAM Role and attach Ubuntu Instance (1. Route53FullAccess, S3, Ec2Ful, IAMF)
+        - K8s Master
+        - K8s Node-1
+        - K8s Node-2
+        - K8s Node-3
+
+intellipaat.com ---- WebServers 
+
+Login: --- Application Servers 
+
+Images : ---- Image Servers 
+
+Videos : ---- Videos Servers 
+
+
+ubuntu@k8s:~$ history
+    1  ifconfig
+    2  cat /etc/hosts
+    3  echo 172.31.85.176 k8s.ckk.cloud >> /etc/hosts
+    4  sudo echo 172.31.85.176 k8s.ckk.cloud >> /etc/hosts
+    5  sudo su
+    6  cat /etc/hosts
+    7  aws --version
+    8  sudo apt-get update
+    9  python
+   10  sudo apt install python
+   11  python
+   12  python --version
+   13  curl https://s3.amazonaws.com/aws-cli/awscli-bundle.zip -o awscli-bundle.zip
+   14  ls -lrt
+   15  sudo apt-get install unzip curl elinks vim wget 
+   16  pwd
+   17  ls -lrt
+   18  unzip awscli-bundle.zip 
+   19  ls -lrt
+   20  cd awscli-bundle/
+   21  ls -lrta
+   22  # ./install -i /usr/local/aws -b /usr/local/bin/aws 
+   23  ls -lrt /usr/local/aws
+   24  ls -lrt /usr/local/bin/aws
+   25  ./install -i /usr/local/aws -b /usr/local/bin/aws
+   26  sudo ./install -i /usr/local/aws -b /usr/local/bin/aws
+   27  aws --version
+   28  curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+   29  ls -lrt
+   30  mv kubectl /home/ubuntu/
+   31  pwd
+   32  cd
+   33  ls -lrt
+   34  chmod +x kubectl 
+   35  ls -lrt
+   36  sudo mv kubectl /usr/local/bin/
+   37  ls -lrt /usr/local/bin/kubectl 
+   38  kubectl 
+   39  kubectl --version
+   40  kubectlversion
+   41  kubectl version
+   42  pwd
+   43  ls -lrt
+   44  curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+   45  ls -lrt
+   46  chmod +x kops-linux-amd64 
+   47  ls -lrt
+   48  sudo mv kops-linux-amd64 /usr/local/bin/kops
+   49  kops
+   50  kops version
+
+
+   https://kubernetes.io/docs/home/
+
+   
